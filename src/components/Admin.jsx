@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, Inbox, LogOut, Mail, RefreshCw, Trash2 } from 'lucide-react';
 
 // Private inbox for messages sent through the contact form.
-// Visit /admin and enter your ADMIN_TOKEN.
+// Visit /admin and enter the ADMIN_TOKEN you set in Vercel.
 export default function Admin() {
   const [token, setToken] = useState(() => {
     try {
