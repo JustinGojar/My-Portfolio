@@ -17,7 +17,7 @@ export const profile = {
   socials: {
     github: 'https://github.com/justingojar',
     linkedin: 'https://www.linkedin.com/in/justin-gojar-4b88583b3',
-    facebook: 'https://www.facebook.com/share/1TYaWesD8w/',
+    facebook: 'https://www.facebook.com/gojar.justin',
   },
 };
 
