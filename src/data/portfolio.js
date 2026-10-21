@@ -6,6 +6,7 @@
 export const profile = {
   name: 'Justin Gojar',
   initials: 'JG',
+  avatar: '/avatar.webp', // transparent-background photo in /public
   roles: ['Full-Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Creative Coder'],
   tagline:
     'I design and build fast, accessible and beautifully animated web experiences — from pixel-perfect interfaces to the APIs behind them.',
