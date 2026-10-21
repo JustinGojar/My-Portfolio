@@ -87,7 +87,7 @@ export const projects = [
     category: 'Frontend',
     description:
       'This website — an animated, full-stack portfolio with serverless contact API, view counter and dark/light themes.',
-    tags: ['React', 'Framer Motion', 'Netlify Functions'],
+    tags: ['React', 'Framer Motion', 'Vercel Functions'],
     gradient: 'from-violet-500 via-fuchsia-500 to-pink-500',
     live: '#',
     code: 'https://github.com/justingojar/My-Portfolio',
