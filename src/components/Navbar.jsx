@@ -37,7 +37,7 @@ export default function Navbar() {
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-accent to-accent2 text-white">
             <LogoMark width={22} height={22} />
           </span>
-          <span className="hidden sm:inline">{profile.name.split(' ')[0]}<span className="text-accent">.</span></span>
+          <span className="hidden sm:inline">Portfolio<span className="text-accent">.</span></span>
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">
