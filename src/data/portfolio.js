@@ -70,62 +70,15 @@ export const techMarquee = [
 // category is used by the filter buttons in the Projects section
 export const projects = [
   {
-    title: 'Bulan SeniorCare',
+    title: 'Bulan Senior Care',
     category: 'Full-Stack',
     description:
       'A senior-citizen management system with records, benefits tracking and a dashboard for local government staff.',
-    tags: ['React', 'Node.js', 'MySQL'],
+    tags: ['Vercel', 'Railway', 'React', 'Node.js', 'MySQL'],
     gradient: 'from-teal-400 via-cyan-500 to-indigo-500',
-    live: '#',
+    live: 'https://bulan-senior-care.vercel.app/',
     code: 'https://github.com/JustinGojar/Bulan_Senior_Care.git',
     featured: true,
-  },
-  {
-    title: 'Motion Portfolio',
-    category: 'Frontend',
-    description:
-      'This website — an animated, full-stack portfolio with serverless contact API, view counter and dark/light themes.',
-    tags: ['React', 'Framer Motion', 'Vercel Functions'],
-    gradient: 'from-violet-500 via-fuchsia-500 to-pink-500',
-    live: '#',
-    code: 'https://github.com/justingojar/My-Portfolio',
-    featured: true,
-  },
-  {
-    title: 'TaskFlow',
-    category: 'Full-Stack',
-    description: 'A Kanban-style task manager with drag & drop, auth and real-time sync between devices.',
-    tags: ['React', 'Firebase', 'Tailwind'],
-    gradient: 'from-amber-400 via-orange-500 to-rose-500',
-    live: '#',
-    code: 'https://github.com/justingojar',
-  },
-  {
-    title: 'WeatherNow',
-    category: 'Frontend',
-    description: 'A clean weather dashboard with 7-day forecast, geolocation and animated weather icons.',
-    tags: ['JavaScript', 'API', 'CSS'],
-    gradient: 'from-sky-400 via-blue-500 to-indigo-600',
-    live: '#',
-    code: 'https://github.com/justingojar',
-  },
-  {
-    title: 'ShopLite API',
-    category: 'Backend',
-    description: 'A RESTful e-commerce API with JWT auth, product catalog, cart and order endpoints.',
-    tags: ['Node.js', 'Express', 'MongoDB'],
-    gradient: 'from-emerald-400 via-green-500 to-teal-600',
-    live: '#',
-    code: 'https://github.com/justingojar',
-  },
-  {
-    title: 'Mobile Landing UI',
-    category: 'UI/UX',
-    description: 'A high-converting landing page design system built in Figma and implemented responsively.',
-    tags: ['Figma', 'Design System', 'HTML/CSS'],
-    gradient: 'from-pink-400 via-rose-500 to-red-500',
-    live: '#',
-    code: 'https://github.com/justingojar',
   },
 ];
 
