@@ -9,7 +9,7 @@ export const profile = {
   avatar: '/avatar.webp', // transparent-background photo in /public
   roles: ['Full-Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Creative Coder'],
   tagline:
-    'I design and build fast, accessible and beautifully animated web experiences — from pixel-perfect interfaces to the APIs behind them.',
+    'An aspiring web and app developer on a journey of learning, building, and growing. I turn ideas into simple, functional digital experiences while exploring new technologies and developing my skills one project at a time.',
   location: 'Philippines',
   email: 'gojarjustin9@gmail.com',
   resumeUrl: '/resume.pdf', // drop your resume into /public/resume.pdf
