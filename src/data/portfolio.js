@@ -28,7 +28,7 @@ export const about = {
   ],
   stats: [
     { value: 3, suffix: '+', label: 'Years coding' },
-    { value: 20, suffix: '+', label: 'Projects built' },
+    { value: 1, suffix: '', label: 'Projects built' },
     { value: 10, suffix: '+', label: 'Technologies' },
     { value: 100, suffix: '%', label: 'Commitment' },
   ],
@@ -38,7 +38,7 @@ export const skills = [
   {
     group: 'Frontend',
     items: [
-      { name: 'React', level: 90 },
+      { name: 'React', level: 85 },
       { name: 'JavaScript / TypeScript', level: 88 },
       { name: 'Tailwind CSS', level: 92 },
       { name: 'HTML & CSS', level: 95 },
@@ -49,24 +49,22 @@ export const skills = [
     items: [
       { name: 'Node.js / Express', level: 82 },
       { name: 'REST APIs', level: 85 },
-      { name: 'Serverless (Netlify)', level: 80 },
-      { name: 'PHP / Laravel', level: 70 },
+      { name: 'PHP / Laravel', level: 76 },
     ],
   },
   {
     group: 'Tools & Data',
     items: [
-      { name: 'Git & GitHub', level: 88 },
-      { name: 'MySQL / PostgreSQL', level: 78 },
-      { name: 'MongoDB / Firebase', level: 75 },
-      { name: 'Figma', level: 80 },
+      { name: 'Git & GitHub', level: 90 },
+      { name: 'ChatGPT/Claude', level: 95 },
+      { name: 'Figma', level: 60 },
     ],
   },
 ];
 
 export const techMarquee = [
-  'React', 'Vite', 'Node.js', 'Tailwind', 'Framer Motion', 'TypeScript', 'Express',
-  'MongoDB', 'PostgreSQL', 'Firebase', 'Netlify', 'Git', 'Figma', 'Laravel',
+  'React', 'Vite', 'Node.js', 'Tailwind', 'ClaudeCode/Codex', 'TypeScript', 'Express',
+  'MongoDB', 'PostgreSQL', 'Supabase', 'Netlify', 'Git', 'Figma', 'Laravel',
 ];
 
 // category is used by the filter buttons in the Projects section
@@ -79,7 +77,7 @@ export const projects = [
     tags: ['React', 'Node.js', 'MySQL'],
     gradient: 'from-teal-400 via-cyan-500 to-indigo-500',
     live: '#',
-    code: 'https://github.com/justingojar',
+    code: 'https://github.com/JustinGojar/Bulan_Senior_Care.git',
     featured: true,
   },
   {
