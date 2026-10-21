@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { navLinks, profile } from '../data/portfolio.js';
+import { LogoMark } from './Icons.jsx';
 import useTheme from '../hooks/useTheme.js';
 import useActiveSection from '../hooks/useActiveSection.js';
 
@@ -33,8 +34,8 @@ export default function Navbar() {
         }`}
       >
         <a href="#home" className="flex items-center gap-2 font-display text-lg font-bold">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-accent to-accent2 text-sm text-white">
-            {profile.initials}
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-accent to-accent2 text-white">
+            <LogoMark width={22} height={22} />
           </span>
           <span className="hidden sm:inline">{profile.name.split(' ')[0]}<span className="text-accent">.</span></span>
         </a>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { profile } from '../data/portfolio.js';
+import { LogoMark } from './Icons.jsx';
 
 export default function Loader() {
   return (
@@ -25,7 +25,7 @@ export default function Loader() {
             animate={{ rotate: -360 }}
             transition={{ repeat: Infinity, duration: 4, ease: 'linear' }}
           />
-          <span className="text-gradient font-display text-3xl font-bold">{profile.initials}</span>
+          <LogoMark gradient width={44} height={44} />
         </motion.div>
         <div className="h-1 w-48 overflow-hidden rounded-full bg-line/10">
           <motion.div
