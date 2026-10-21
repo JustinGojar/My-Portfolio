@@ -138,10 +138,13 @@ export default function Hero({ ready }) {
             <div className="h-full w-full rounded-full bg-paper" />
           </div>
           <div className="absolute inset-6 overflow-hidden rounded-full bg-gradient-to-br from-accent/30 to-accent2/30">
-            {/* Replace with <img src="/avatar.jpg" ...> after adding your photo to /public */}
-            <div className="grid h-full w-full place-items-center font-display text-8xl font-bold text-gradient">
-              {profile.initials}
-            </div>
+            <img
+              src={profile.avatar}
+              alt={profile.name}
+              width={800}
+              height={800}
+              className="h-full w-full translate-y-[6%] scale-110 object-cover object-top"
+            />
           </div>
           <motion.div
             animate={{ y: [0, -10, 0] }}
