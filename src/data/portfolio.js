@@ -7,7 +7,7 @@ export const profile = {
   name: 'Justin Gojar',
   initials: 'JG',
   avatar: '/avatar.webp', // transparent-background photo in /public
-  roles: ['Full-Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Creative Coder'],
+  roles: ['Frontend Developer', 'Fast Learner', 'Problem Solver', 'Creative Vibe Coder', 'Web Developer', 'App Developer', 'Tech Explorer', 'Digital Creator', 'Interface Innovator', 'Design Thinker'],
   tagline:
     'An aspiring web and app developer on a journey of learning, building, and growing. I turn ideas into simple, functional digital experiences while exploring new technologies and developing my skills one project at a time.',
   location: 'Philippines',
