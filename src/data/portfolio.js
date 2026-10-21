@@ -85,21 +85,21 @@ export const projects = [
 export const experience = [
   {
     period: '2025 — Present',
-    title: 'Freelance Full-Stack Developer',
+    title: 'Freelance Frontend Developer / QA Tester',
     place: 'Remote',
     description: 'Building websites and web apps for small businesses and organizations, from design to deployment.',
   },
   {
-    period: '2024 — 2025',
-    title: 'Capstone Project Lead',
-    place: 'University',
-    description: 'Led a team building a full-stack management system; owned architecture, backend and deployment.',
+    period: '2024 — 2026',
+    title: 'Capstone Project',
+    place: 'Sorsogon State University - Bulan Campus',
+    description: 'Led a team building a full-stack government system; owned architecture, frontend, backend and deployment.',
   },
   {
-    period: '2022 — Present',
+    period: '2023 — Present',
     title: 'BS Information Technology',
-    place: 'University',
-    description: 'Focused on software engineering, databases, web development and human-computer interaction.',
+    place: 'Sorsogon State University - Bulan Campus',
+    description: 'Focused on learning It fundamentals, software engineering, databases, app/web development and human-computer interaction.',
   },
 ];
 
