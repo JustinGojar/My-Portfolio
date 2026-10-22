@@ -10,8 +10,8 @@ export const profile = {
   roles: ['Frontend Developer', 'Fast Learner', 'Problem Solver', 'Creative Vibe Coder', 'Web Developer', 'App Developer', 'Tech Explorer', 'Digital Creator', 'Interface Innovator', 'Design Thinker'],
   tagline:
     'An aspiring web and app developer on a journey of learning, building, and growing. I turn ideas into simple, functional digital experiences while exploring new technologies and developing my skills one project at a time.',
-  location: 'Philippines',
-  email: 'gojarjustin9@gmail.com',
+  location: 'Bulan, Sorsogon, Philippines',
+  email: 'gojarjustinofficial@gmail.com',
   resumeUrl: '/resume.pdf', // drop your resume into /public/resume.pdf
   available: true,
   socials: {
