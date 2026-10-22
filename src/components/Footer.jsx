@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Eye, Heart } from 'lucide-react';
 import { navLinks, profile } from '../data/portfolio.js';
-import { FacebookIcon, GithubIcon, LinkedinIcon } from './Icons.jsx';
+import { FacebookIcon, GithubIcon, LinkedinIcon, TelegramIcon } from './Icons.jsx';
 
 function useViews() {
   const [views, setViews] = useState(null);
@@ -52,6 +52,9 @@ export default function Footer() {
           </a>
           <a href={profile.socials.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="hover:text-accent">
             <FacebookIcon />
+          </a>
+          <a href={profile.socials.telegram} target="_blank" rel="noreferrer" aria-label="Telegram" className="hover:text-accent">
+            <TelegramIcon />
           </a>
         </div>
       </div>
