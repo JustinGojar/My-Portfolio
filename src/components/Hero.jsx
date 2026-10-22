@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, Download, MapPin, Send } from 'lucide-react';
 import { profile, techMarquee } from '../data/portfolio.js';
-import { FacebookIcon, GithubIcon, LinkedinIcon } from './Icons.jsx';
+import { FacebookIcon, GithubIcon, LinkedinIcon, TelegramIcon } from './Icons.jsx';
 
 function RotatingRole() {
   const [i, setI] = useState(0);
@@ -44,6 +44,7 @@ export default function Hero({ ready }) {
     { href: profile.socials.github, Icon: GithubIcon, label: 'GitHub' },
     { href: profile.socials.linkedin, Icon: LinkedinIcon, label: 'LinkedIn' },
     { href: profile.socials.facebook, Icon: FacebookIcon, label: 'Facebook' },
+    { href: profile.socials.telegram, Icon: TelegramIcon, label: 'Telegram' },
   ];
 
   return (

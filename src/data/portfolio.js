@@ -18,6 +18,7 @@ export const profile = {
     github: 'https://github.com/justingojar',
     linkedin: 'https://www.linkedin.com/in/justin-gojar-4b88583b3',
     facebook: 'https://www.facebook.com/gojar.justin',
+    telegram: 'https://t.me/parzival609',
   },
 };
 
