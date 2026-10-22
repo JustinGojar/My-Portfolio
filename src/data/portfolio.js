@@ -63,8 +63,7 @@ export const skills = [
 ];
 
 export const techMarquee = [
-  'React', 'Vite', 'Node.js', 'Tailwind', 'ClaudeCode/Codex', 'TypeScript', 'Express',
-  'MongoDB', 'PostgreSQL', 'Supabase', 'Netlify', 'Git', 'Figma', 'Laravel',
+  'React', 'Vite', 'Node.js', 'Tailwind', 'ClaudeCode/Codex', 'TypeScript', 'MySQL', 'Supabase', 'Vercel', 'Railway','Netlify', 'Git', 'Figma', 'Laravel',
 ];
 
 // category is used by the filter buttons in the Projects section
@@ -78,6 +77,17 @@ export const projects = [
     gradient: 'from-teal-400 via-cyan-500 to-indigo-500',
     live: 'https://bulan-senior-care.vercel.app/',
     code: 'https://github.com/JustinGojar/Bulan_Senior_Care.git',
+    featured: true,
+  },
+  {
+    title: 'Equalize Gender',
+        category: 'Front-End',
+    description:
+      'A gender awareness and inclusion platform on gender-based violence and harassment, built around official Philippine data and laws (RA 9262, RA 9710, RA 11313, RA 11596), with interactive statistics, a myth-or-fact quiz, and take-action resources.',
+    tags: ['React', 'TypeScript', 'TanStack Start', 'Tailwind CSS', 'Chart.js', 'Vercel'],
+    gradient: 'from-teal-400 via-cyan-500 to-indigo-500',
+    live: 'https://equalize-gender.vercel.app/',
+    code: 'https://github.com/JustinGojar/Equalize-Gender.git',
     featured: true,
   },
 ];
