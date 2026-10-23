@@ -47,12 +47,23 @@ function TiltCard({ project }) {
         style={{ background: glow }}
       />
       <div className={`relative h-44 overflow-hidden bg-gradient-to-br ${project.gradient}`}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.35),transparent_60%)]" />
-        <div className="absolute inset-0 grid place-items-center">
-          <span className="font-display text-3xl font-bold text-white/90 drop-shadow-lg transition-transform duration-700 group-hover:scale-110">
-            {project.title}
-          </span>
-        </div>
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={`${project.title} banner`}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.35),transparent_60%)]" />
+            <div className="absolute inset-0 grid place-items-center">
+              <span className="font-display text-3xl font-bold text-white/90 drop-shadow-lg transition-transform duration-700 group-hover:scale-110">
+                {project.title}
+              </span>
+            </div>
+          </>
+        )}
         {project.featured && (
           <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white backdrop-blur">
             <Star size={12} fill="currentColor" /> Featured

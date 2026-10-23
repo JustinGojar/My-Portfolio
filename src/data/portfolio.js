@@ -76,6 +76,7 @@ export const projects = [
       'A senior-citizen management system with records, benefits tracking and a dashboard for local government staff.',
     tags: ['Vercel', 'Railway', 'React', 'Node.js', 'MySQL'],
     gradient: 'from-teal-400 via-cyan-500 to-indigo-500',
+    image: '/projects/bulan-senior-care.webp',
     live: 'https://bulan-senior-care.vercel.app/',
     code: 'https://github.com/JustinGojar/Bulan_Senior_Care.git',
     featured: true,
