@@ -52,7 +52,7 @@ function TiltCard({ project }) {
             src={project.image}
             alt={`${project.title} banner`}
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
           />
         ) : (
           <>
