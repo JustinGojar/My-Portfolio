@@ -88,6 +88,7 @@ export const projects = [
       'A gender awareness and inclusion platform on gender-based violence and harassment, built around official Philippine data and laws (RA 9262, RA 9710, RA 11313, RA 11596), with interactive statistics, a myth-or-fact quiz, and take-action resources.',
     tags: ['React', 'TypeScript', 'TanStack Start', 'Tailwind CSS', 'Chart.js', 'Vercel'],
     gradient: 'from-teal-400 via-cyan-500 to-indigo-500',
+    image: '/projects/equalize-gender.webp',
     live: 'https://equalize-gender.vercel.app/',
     code: 'https://github.com/JustinGojar/Equalize-Gender.git',
     featured: true,
