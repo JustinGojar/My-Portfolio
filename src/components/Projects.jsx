@@ -65,7 +65,7 @@ function TiltCard({ project }) {
           </>
         )}
         {project.featured && (
-          <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+          <span className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white backdrop-blur">
             <Star size={12} fill="currentColor" /> Featured
           </span>
         )}
