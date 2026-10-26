@@ -82,7 +82,7 @@ export default function Contact() {
             <div className="glass flex h-full flex-col gap-6 p-8">
               <h3 className="text-2xl font-semibold">Get in touch</h3>
               <p className="text-muted">
-                I usually reply within 24 hours. Open to freelance work, internships and full-time roles.
+                I usually reply within 24 hours. Open to internships, part-time, full-time and remote roles.
               </p>
               <a href={`mailto:${profile.email}`} className="group flex items-center gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-accent/15 text-accent transition group-hover:scale-110">
