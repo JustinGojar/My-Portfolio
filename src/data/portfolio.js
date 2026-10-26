@@ -97,12 +97,6 @@ export const projects = [
 
 export const experience = [
   {
-    period: '2025 — Present',
-    title: 'Freelance Frontend Developer / QA Tester',
-    place: 'Remote',
-    description: 'Building websites and web apps for small businesses and organizations, from design to deployment.',
-  },
-  {
     period: '2024 — 2026',
     title: 'Capstone Project',
     place: 'Sorsogon State University - Bulan Campus',
