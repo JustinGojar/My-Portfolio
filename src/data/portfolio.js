@@ -12,7 +12,7 @@ export const profile = {
     'An aspiring web and app developer on a journey of learning, building, and growing. I turn ideas into simple, functional digital experiences while exploring new technologies and developing my skills one project at a time.',
   location: 'Bulan, Sorsogon, Philippines',
   email: 'gojarjustinofficial@gmail.com',
-  resumeUrl: '/resume.pdf', // drop your resume into /public/resume.pdf
+  resumeUrl: 'https://drive.google.com/file/d/1MWuQuL7jx8ES_LYxPmoCiDYd9GPiBitX/view?usp=drive_link',
   available: true,
   socials: {
     github: 'https://github.com/justingojar',
