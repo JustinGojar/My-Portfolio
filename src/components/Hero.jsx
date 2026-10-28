@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, FileText, MapPin, Send } from 'lucide-react';
+import { ArrowDown, Eye, MapPin, Send } from 'lucide-react';
 import { profile, techMarquee } from '../data/portfolio.js';
 import { FacebookIcon, GithubIcon, LinkedinIcon, TelegramIcon } from './Icons.jsx';
 
@@ -108,7 +108,7 @@ export default function Hero({ ready }) {
               <Send size={16} /> Let's talk
             </a>
             <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-ghost">
-              <FileText size={16} /> View CV
+              <Eye size={16} /> View CV
             </a>
             <div className="flex items-center gap-2 sm:ml-2">
               {socials.map(({ href, Icon, label }) => (
