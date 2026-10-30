@@ -48,7 +48,8 @@ export async function POST(req) {
   const errors = validate(data);
   if (Object.keys(errors).length) return json({ error: 'Validation failed', errors }, 422);
 
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+  const ip =
+    req.headers.get('cf-connecting-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
   const key = `rate:${ip}:${new Date().toISOString().slice(0, 13)}`;
   const count = await redis.incr(key);
   if (count === 1) await redis.expire(key, 3600);

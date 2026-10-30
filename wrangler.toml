@@ -1,5 +1,8 @@
 # Cloudflare Pages config: serve the Vite build output, not the raw source.
 # Build command (set in the Cloudflare dashboard): npm run build
+# The API lives in functions/api (wrappers around api/). nodejs_compat exposes
+# the project's environment variables and secrets on process.env.
 name = "justingojar-portfolio"
 pages_build_output_dir = "./dist"
 compatibility_date = "2026-10-30"
+compatibility_flags = ["nodejs_compat"]
