@@ -17,10 +17,10 @@ A full-stack, animated developer portfolio built with **React + Vite + Tailwind 
 | Endpoint | Method | What it does |
 |---|---|---|
 | `/api/contact` | POST | Validates and stores contact messages (honeypot + 5/hour per-IP rate limit). Optionally emails you through Resend. |
-| `/api/messages` | GET / PATCH / DELETE | Private inbox API, protected by `ADMIN_TOKEN` |
+| `/api/messages` | GET / POST / PATCH / DELETE | Private inbox API, protected by `ADMIN_TOKEN`. POST emails a reply to the sender through Resend. |
 | `/api/views` | GET / POST | Site view counter shown in the footer |
 
-**Admin inbox**: open `/admin` on your site and enter your `ADMIN_TOKEN` to read, mark as read and delete messages.
+**Admin inbox**: open `/admin` on your site and enter your `ADMIN_TOKEN`. Click a message to open it, reply (sent to the sender's email through Resend) or delete it. Sending replies to any address requires a domain verified in Resend, with `CONTACT_FROM_EMAIL` on that domain; the **Open in Gmail** button works without it.
 
 ## Make it yours
 

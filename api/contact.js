@@ -1,3 +1,4 @@
+import { sendEmail } from './_lib/email.js';
 import { json, redis } from './_lib/redis.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -13,21 +14,16 @@ function validate({ name, email, subject, message }) {
   return errors;
 }
 
-async function sendEmail(entry) {
-  const { RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL } = process.env;
-  if (!RESEND_API_KEY || !CONTACT_TO_EMAIL) return;
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      from: CONTACT_FROM_EMAIL || 'Portfolio <onboarding@resend.dev>',
-      to: [CONTACT_TO_EMAIL],
-      reply_to: entry.email,
-      subject: `Portfolio: ${entry.subject || 'New message'} — ${entry.name}`,
-      text: `From: ${entry.name} <${entry.email}>\n\n${entry.message}`,
-    }),
+async function notifyOwner(entry) {
+  const { CONTACT_TO_EMAIL } = process.env;
+  if (!CONTACT_TO_EMAIL) return;
+  const result = await sendEmail({
+    to: CONTACT_TO_EMAIL,
+    replyTo: entry.email,
+    subject: `Portfolio: ${entry.subject || 'New message'} — ${entry.name}`,
+    text: `From: ${entry.name} <${entry.email}>\n\n${entry.message}`,
   });
-  if (!res.ok) console.error('Resend error', res.status, await res.text());
+  if (!result.ok) console.error('Resend error', result.error);
 }
 
 export async function POST(req) {
@@ -68,7 +64,7 @@ export async function POST(req) {
   await redis.hset('messages', { [entry.id]: JSON.stringify(entry) });
 
   try {
-    await sendEmail(entry);
+    await notifyOwner(entry);
   } catch (err) {
     console.error('Email notification failed', err);
   }
