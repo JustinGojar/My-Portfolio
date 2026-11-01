@@ -179,7 +179,7 @@ img { display: block; max-width: 100%; }
   transform-style: preserve-3d;
 }
 .id-card .photo { aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; background: #111; position: relative; }
-.id-card .photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); pointer-events: none; }
+.id-card .photo img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 .id-card .photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(200deg, rgba(255,42,69,.22), transparent 55%); mix-blend-mode: screen; }
 .id-card .meta { display: flex; justify-content: space-between; align-items: end; margin-top: 12px; }
 .id-card .meta strong { font-family: var(--font-display); font-size: 13px; font-weight: 700; display: block; }
@@ -214,7 +214,7 @@ img { display: block; max-width: 100%; }
   background: conic-gradient(from 0deg, var(--red), transparent 30%, transparent 60%, var(--red));
   filter: blur(6px); opacity: .7; animation: spin 8s linear infinite;
 }
-.avatar-ring img { position: relative; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; filter: grayscale(1) contrast(1.1); border: 4px solid #000; }
+.avatar-ring img { position: relative; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid #000; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 60px; }
 .stat {
