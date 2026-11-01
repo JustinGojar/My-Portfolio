@@ -5,7 +5,7 @@
 
 export const profile = {
   brand: 'justin.dev',
-  siteUrl: 'www.justin-gojar.vercel.app',
+  siteUrl: 'gojar-portfolio.pages.dev',
   name: 'Justin L. Gojar',
   firstName: 'Justin',
   photo: '/avatar.webp',
