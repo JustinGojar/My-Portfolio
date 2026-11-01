@@ -1,8 +1,9 @@
 import {
   SiReact, SiJavascript, SiTypescript, SiHtml5, SiCss, SiTailwindcss, SiPhp, SiLaravel, SiMysql,
   SiVite, SiGit, SiGithub, SiPostman, SiFigma, SiInstagram, SiYoutube, SiTiktok, SiNextdotjs,
+  SiNodedotjs, SiExpress, SiSupabase, SiVercel, SiRailway, SiNetlify, SiClaude, SiFacebook, SiTelegram,
 } from 'react-icons/si'
-import { Linkedin } from 'lucide-react'
+import { Linkedin, Mail } from 'lucide-react'
 
 // Brand-coloured logos for the Tech Stack tab and social links.
 const map = {
@@ -25,6 +26,16 @@ const map = {
   youtube: [SiYoutube, '#FF0000'],
   tiktok: [SiTiktok, '#ffffff'],
   linkedin: [Linkedin, '#0A66C2'],
+  node: [SiNodedotjs, '#5FA04E'],
+  express: [SiExpress, '#ffffff'],
+  supabase: [SiSupabase, '#3FCF8E'],
+  vercel: [SiVercel, '#ffffff'],
+  railway: [SiRailway, '#ffffff'],
+  netlify: [SiNetlify, '#00C7B7'],
+  claude: [SiClaude, '#D97757'],
+  facebook: [SiFacebook, '#1877F2'],
+  telegram: [SiTelegram, '#26A5E4'],
+  email: [Mail, '#ff2a45'],
 }
 
 export default function TechIcon({ name, className, mono = false }) {

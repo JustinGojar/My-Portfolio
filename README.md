@@ -15,7 +15,7 @@ npm run build    # production files in /dist
 Everything you'll edit is in **`src/data.js`** (name, roles, about text, projects,
 certificates, tech stack, social links).
 
-- **Photo:** put your picture in `public/` (e.g. `profile.jpg`) and set `photo: '/profile.jpg'`.
+- **Photo:** `public/avatar.webp` (set by `photo` in `src/data.js`).
   A portrait (4:5) crop looks best on the ID card.
 - **CV:** drop your resume at `public/cv.pdf` for the Download CV button.
 - **Certificates:** put scans in `public/certificates/` and list them in `certificates`.

@@ -383,6 +383,17 @@ img { display: block; max-width: 100%; }
 .footer span { color: var(--red); }
 
 /* ── Responsive ──────────────────────────────────────────── */
+/* ── Journey ─────────────────────────────────────────────── */
+.about p.body + p.body { margin-top: 14px; }
+.timeline { position: relative; max-width: 760px; margin: 50px auto 0; padding-left: 40px; }
+.timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 1px; background: linear-gradient(var(--red), transparent); }
+.tl-item { position: relative; margin-bottom: 24px; }
+.tl-dot { position: absolute; left: -40px; top: 26px; width: 31px; height: 31px; border-radius: 50%; display: grid; place-items: center; background: var(--red-soft); color: var(--red); border: 1px solid rgba(255,42,69,.5); box-shadow: var(--red-glow); }
+.tl-period { font-family: var(--font-mono); font-size: 12px; letter-spacing: .15em; color: var(--red); }
+.journey .panel-card h3 { font-size: 20px; margin-top: 6px; }
+.tl-place { color: var(--dim); font-size: 13px; margin-top: 2px; }
+.journey .panel-card p { color: var(--muted); font-size: 14px; margin-top: 12px; }
+
 @media (max-width: 900px) {
   .hero .container, .about .grid, .detail .grid, .contact .grid { grid-template-columns: 1fr; }
   .hero { padding-top: 110px; }
