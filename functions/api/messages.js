@@ -17,9 +17,9 @@ const json = (data, status = 200) =>
 const sha256 = async (s) => crypto.subtle.digest('SHA-256', new TextEncoder().encode(s))
 
 async function isAdmin(request, env) {
-  if (!env.ADMIN_PASSWORD) return false
-  const given = (request.headers.get('authorization') || '').replace(/^Bearer /, '')
-  const [a, b] = await Promise.all([sha256(given), sha256(env.ADMIN_PASSWORD)])
+  // trim both sides: a stray space or newline from copy-paste shouldn't lock you out
+  const given = (request.headers.get('authorization') || '').replace(/^Bearer /, '').trim()
+  const [a, b] = await Promise.all([sha256(given), sha256(env.ADMIN_PASSWORD.trim())])
   return crypto.subtle.timingSafeEqual(a, b)
 }
 
@@ -45,6 +45,9 @@ export async function onRequest({ request, env }) {
     return json({ ok: true }, 201)
   }
 
+  if (!env.ADMIN_PASSWORD) {
+    return json({ error: 'ADMIN_PASSWORD is not set in Cloudflare (or the site was not redeployed after adding it).' }, 503)
+  }
   if (!(await isAdmin(request, env))) return json({ error: 'Wrong password.' }, 401)
 
   if (request.method === 'GET') {
