@@ -1,4 +1,4 @@
-import { CodeXml, Award, Globe, ArrowUpRight, FileText } from 'lucide-react'
+import { CodeXml, Award, Globe, ArrowUpRight, Eye } from 'lucide-react'
 import Reveal from './Reveal.jsx'
 import { profile, projects, certificates } from '../data.js'
 
@@ -26,7 +26,7 @@ export default function About() {
               <div className="quote">“{profile.quote}”</div>
               <div className="btn-row">
                 <a className="btn btn-primary" href={profile.cv} target="_blank" rel="noreferrer">
-                  <FileText size={15} /> Download CV
+                  <Eye size={15} /> View CV
                 </a>
                 <a className="btn btn-ghost" href="#portfolio" onClick={() => goTab('projects')}>
                   <ArrowUpRight size={15} /> View Projects
