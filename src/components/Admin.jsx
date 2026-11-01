@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { profile } from '../data.js'
-import { Lock, LogOut, RefreshCw, Trash2, Mail, Inbox, ArrowLeft } from 'lucide-react'
+import { Lock, LogOut, RefreshCw, Trash2, Mail, Inbox, ArrowLeft, Heart, MessageCircle } from 'lucide-react'
 
 const KEY = 'portfolio-admin-pass'
 const getPass = () => {
@@ -10,8 +10,8 @@ const setPass = (v) => {
   try { v ? sessionStorage.setItem(KEY, v) : sessionStorage.removeItem(KEY) } catch { /* blocked */ }
 }
 
-async function api(pass, method = 'GET', id) {
-  const res = await fetch(`/api/messages${id ? `?id=${encodeURIComponent(id)}` : ''}`, {
+async function api(pass, method = 'GET', id, path = 'messages') {
+  const res = await fetch(`/api/${path}${id ? `?id=${encodeURIComponent(id)}` : ''}`, {
     method,
     headers: { authorization: `Bearer ${pass}` },
   })
@@ -40,6 +40,8 @@ export default function Admin() {
   const [pass, setPassState] = useState(getPass)
   const [input, setInput] = useState('')
   const [messages, setMessages] = useState(null)
+  const [comments, setComments] = useState([])
+  const [tab, setTab] = useState('messages')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -53,8 +55,9 @@ export default function Admin() {
     setLoading(true)
     setError('')
     try {
-      const data = await api(p)
+      const [data, c] = await Promise.all([api(p), api(p, 'GET', null, 'comments?limit=100')])
       setMessages(data.messages)
+      setComments(c.comments)
       setPass(p)
       setPassState(p)
     } catch (e) {
@@ -80,6 +83,16 @@ export default function Admin() {
     try {
       await api(pass, 'DELETE', m.id)
       setMessages((list) => list.filter((x) => x.id !== m.id))
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
+  const removeComment = async (c) => {
+    if (!confirm(`Delete the comment from ${c.name}?`)) return
+    try {
+      await api(pass, 'DELETE', c.id, 'comments')
+      setComments((list) => list.filter((x) => x.id !== c.id))
     } catch (e) {
       setError(e.message)
     }
@@ -115,8 +128,10 @@ export default function Admin() {
       <div className="container">
         <header className="admin-head">
           <div>
-            <h1 className="sec-title">Messages</h1>
-            <p className="sub">{messages.length} total · {unread} unread</p>
+            <h1 className="sec-title">{tab === 'messages' ? 'Messages' : 'Comments'}</h1>
+            <p className="sub">
+              {tab === 'messages' ? `${messages.length} total · ${unread} unread` : `${comments.length} total`}
+            </p>
           </div>
           <div className="btn-row">
             <button className="btn btn-ghost" onClick={() => load(pass)} disabled={loading}>
@@ -126,9 +141,42 @@ export default function Admin() {
           </div>
         </header>
 
+        <div className="admin-tabs" role="tablist">
+          <button role="tab" aria-selected={tab === 'messages'} className={tab === 'messages' ? 'on' : ''} onClick={() => setTab('messages')}>
+            <Mail size={15} /> Messages {unread > 0 && <span className="count">{unread}</span>}
+          </button>
+          <button role="tab" aria-selected={tab === 'comments'} className={tab === 'comments' ? 'on' : ''} onClick={() => setTab('comments')}>
+            <MessageCircle size={15} /> Comments <span className="count dim">{comments.length}</span>
+          </button>
+        </div>
+
         {error && <p className="admin-error">{error}</p>}
 
-        {messages.length === 0 ? (
+        {tab === 'comments' ? (
+          comments.length === 0 ? (
+            <div className="panel-card admin-empty"><MessageCircle size={28} /><p>No comments yet.</p></div>
+          ) : (
+            <div className="admin-list">
+              {comments.map((c) => (
+                <div key={c.id} className="panel-card admin-cmt">
+                  <div className="av">{c.name[0]}</div>
+                  <div className="cmt-body">
+                    <div className="cmt-head">
+                      <b>{c.name}</b>
+                      <time>{when(c.t)}</time>
+                      <span className="cmt-likes"><Heart size={12} /> {c.likes || 0}</span>
+                    </div>
+                    <p>{c.text}</p>
+                    {c.img && <img src={c.img} alt="" loading="lazy" />}
+                  </div>
+                  <button className="btn btn-ghost icon-btn" onClick={() => removeComment(c)} aria-label="Delete comment" title="Delete">
+                    <Trash2 size={16} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )
+        ) : messages.length === 0 ? (
           <div className="panel-card admin-empty"><Inbox size={28} /><p>No messages yet.</p></div>
         ) : (
           <div className="admin-list">
