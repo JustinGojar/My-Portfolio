@@ -255,7 +255,7 @@ img { display: block; max-width: 100%; }
   transition: all .35s; display: flex; flex-direction: column;
 }
 .card:hover { transform: translateY(-6px); border-color: rgba(255,42,69,.45); box-shadow: 0 0 34px rgba(255,42,69,.14); }
-.card .thumb { border-radius: 12px; overflow: hidden; aspect-ratio: 16/10; background: #0a0a0a; }
+.card .thumb { border-radius: 12px; overflow: hidden; aspect-ratio: 1200/628; background: #0a0a0a; }
 .card .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
 .card:hover .thumb img { transform: scale(1.06); }
 .card h3 { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin: 16px 4px 8px; }
