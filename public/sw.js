@@ -2,7 +2,7 @@
 // Pages: network first (fresh content), falling back to the cached app shell.
 // Static assets: cache first, refreshed in the background.
 // API calls (/api/*) and cross-origin requests other than Google Fonts are never cached.
-const CACHE = 'gojar-v1';
+const CACHE = 'gojar-v2';
 const SHELL = ['/', '/manifest.webmanifest', '/favicon.svg', '/icons/icon-192.png', '/icons/icon-512.png'];
 
 self.addEventListener('install', (event) => {
