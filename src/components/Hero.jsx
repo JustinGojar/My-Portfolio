@@ -60,7 +60,7 @@ export default function Hero() {
         </div>
         <Lanyard />
       </div>
-      <a href="#about" className="scroll-hint">SCROLL <ArrowDown size={14} /></a>
+      <a href="/about" className="scroll-hint">SCROLL <ArrowDown size={14} /></a>
     </section>
   )
 }

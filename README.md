@@ -38,7 +38,7 @@ Push to GitHub, import the repo on Vercel; it detects Vite automatically
 ## Contact messages & admin page
 
 The **Send Message** form posts to a Cloudflare Pages Function (`functions/api/messages.js`),
-which stores each message in Cloudflare KV. Read them at **`/#/admin`**.
+which stores each message in Cloudflare KV. Read them at **`/admin`**.
 
 One-time setup in the Cloudflare dashboard:
 

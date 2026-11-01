@@ -29,7 +29,7 @@ export default function Navbar() {
   const parts = profile.brand.split('.')
   return (
     <nav className={`nav ${open ? 'open' : ''}`}>
-      <a href="#home" className="brand">
+      <a href="/" className="brand">
         {parts.map((part, i) => (
           <span key={i}>{i > 0 && <b>.</b>}{part}</span>
         ))}
@@ -39,7 +39,7 @@ export default function Navbar() {
       </button>
       <div className="nav-links">
         {links.map(([id, label]) => (
-          <a key={id} href={`#${id}`} className={active === id ? 'active' : ''} onClick={() => setOpen(false)}>
+          <a key={id} href={id === 'home' ? '/' : `/${id}`} className={active === id ? 'active' : ''} onClick={() => setOpen(false)}>
             {label}
           </a>
         ))}

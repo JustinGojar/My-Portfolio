@@ -93,7 +93,7 @@ export default function Admin() {
           </div>
           {error && <p className="admin-error">{error}</p>}
           <button className="submit" type="submit" disabled={loading}>{loading ? 'Checking…' : 'Log in'}</button>
-          <a className="admin-back" href="#home"><ArrowLeft size={14} /> Back to site</a>
+          <a className="admin-back" href="/"><ArrowLeft size={14} /> Back to site</a>
         </form>
       </main>
     )
