@@ -500,3 +500,15 @@ img { display: block; max-width: 100%; }
 .admin-cmt img { margin-top: 10px; max-width: 220px; border-radius: 10px; border: 1px solid var(--border); }
 .admin-cmt .icon-btn { padding: 0; width: 40px; height: 40px; justify-content: center; flex-shrink: 0; cursor: pointer; }
 .admin-cmt .icon-btn:hover { color: var(--red); }
+
+/* admin: delete confirmation */
+.confirm-overlay { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px; background: rgba(0,0,0,.7); backdrop-filter: blur(4px); animation: panelIn .2s ease; }
+.confirm-box { width: min(420px, 100%); text-align: center; }
+.confirm-icon { width: 46px; height: 46px; margin: 0 auto 14px; border-radius: 50%; display: grid; place-items: center; background: var(--red-soft); color: var(--red); box-shadow: var(--red-glow); }
+.confirm-box .sub { margin: 8px 0 14px; }
+.confirm-box .sub b { color: var(--text); font-weight: 500; }
+.confirm-box blockquote { margin: 0 0 20px; padding: 10px 14px; border-left: 2px solid var(--red); border-radius: 8px; background: var(--surface-2); color: var(--muted); font-size: 13px; text-align: left; max-height: 90px; overflow: hidden; overflow-wrap: anywhere; }
+.confirm-box .btn-row { justify-content: center; }
+.confirm-box .btn { cursor: pointer; font: inherit; font-size: 14px; }
+.btn-danger { background: var(--red); border-color: var(--red); color: #fff; }
+.btn-danger:hover:not(:disabled) { background: var(--red-hot); box-shadow: var(--red-glow); }
