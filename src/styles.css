@@ -137,12 +137,14 @@ img { display: block; max-width: 100%; }
 .typer .caret { color: var(--red); animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .hero p.lead { max-width: 470px; color: var(--muted); font-size: 15px; }
-.tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
-.tag {
-  font-family: var(--font-mono); font-size: 12px; color: var(--muted); padding: 6px 14px; border-radius: 999px;
-  background: var(--surface-2); border: 1px solid var(--border); transition: all 0.25s;
+.hero-socials { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+.hero-social {
+  width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+  transition: color .25s, border-color .25s, box-shadow .25s, transform .25s;
 }
-.tag:hover { color: var(--text); border-color: var(--red); box-shadow: var(--red-glow); }
+.hero-social svg { width: 22px; height: 22px; }
+.hero-social:hover { color: var(--text); border-color: var(--red); box-shadow: var(--red-glow); transform: translateY(-3px); }
 .mono-notes { font-family: var(--font-mono); font-size: 12px; color: var(--dim); line-height: 2; }
 .mono-notes span { color: var(--red); }
 .scroll-hint {
