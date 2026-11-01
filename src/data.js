@@ -12,7 +12,7 @@ export const profile = {
   cv: 'https://drive.google.com/file/d/1ikbMO7qcCj4WtOh6mGd_f_5qoWk_3JcL/view?usp=drivesdk',
   email: 'gojarjustinofficial@gmail.com',
   location: 'Bulan, Sorsogon, Philippines',
-  headline: ['Frontend', 'Developer'],
+  headline: ['QA', 'Tester'],
   cardRole: 'Frontend Dev · Web & App', // small text on the ID card
   roles: [
     'Frontend Developer',
