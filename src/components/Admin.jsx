@@ -78,8 +78,23 @@ export default function Admin() {
     setMessages((list) => list.map((x) => (x.id === m.id ? { ...x, read: true } : x)))
     api(pass, 'PATCH', m.id).catch(() => {})
   }
+  // delete asks first: the trash buttons set `pending`, the dialog confirms
+  const [pending, setPending] = useState(null) // { kind: 'message' | 'comment', item }
+  const [deleting, setDeleting] = useState(false)
+  const confirmDelete = async () => {
+    setDeleting(true)
+    await (pending.kind === 'message' ? remove(pending.item) : removeComment(pending.item))
+    setDeleting(false)
+    setPending(null)
+  }
+  useEffect(() => {
+    if (!pending) return
+    const esc = (e) => e.key === 'Escape' && !deleting && setPending(null)
+    window.addEventListener('keydown', esc)
+    return () => window.removeEventListener('keydown', esc)
+  }, [pending, deleting])
+
   const remove = async (m) => {
-    if (!confirm(`Delete the message from ${m.name}?`)) return
     try {
       await api(pass, 'DELETE', m.id)
       setMessages((list) => list.filter((x) => x.id !== m.id))
@@ -89,7 +104,6 @@ export default function Admin() {
   }
 
   const removeComment = async (c) => {
-    if (!confirm(`Delete the comment from ${c.name}?`)) return
     try {
       await api(pass, 'DELETE', c.id, 'comments')
       setComments((list) => list.filter((x) => x.id !== c.id))
@@ -169,7 +183,7 @@ export default function Admin() {
                     <p>{c.text}</p>
                     {c.img && <img src={c.img} alt="" loading="lazy" />}
                   </div>
-                  <button className="btn btn-ghost icon-btn" onClick={() => removeComment(c)} aria-label="Delete comment" title="Delete">
+                  <button className="btn btn-ghost icon-btn" onClick={() => setPending({ kind: 'comment', item: c })} aria-label="Delete comment" title="Delete">
                     <Trash2 size={16} />
                   </button>
                 </div>
@@ -194,7 +208,7 @@ export default function Admin() {
                   <a className="btn btn-primary" href={gmailReply(m)} target="_blank" rel="noreferrer">
                     <Mail size={15} /> Open Gmail
                   </a>
-                  <button className="btn btn-ghost icon-btn" onClick={() => remove(m)} aria-label="Delete message" title="Delete">
+                  <button className="btn btn-ghost icon-btn" onClick={() => setPending({ kind: 'message', item: m })} aria-label="Delete message" title="Delete">
                     <Trash2 size={16} />
                   </button>
                 </div>
@@ -203,6 +217,24 @@ export default function Admin() {
           </div>
         )}
       </div>
+      {pending && (
+        <div className="confirm-overlay" onClick={() => !deleting && setPending(null)}>
+          <div className="panel-card confirm-box" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" onClick={(e) => e.stopPropagation()}>
+            <div className="confirm-icon"><Trash2 size={20} /></div>
+            <h3 id="confirm-title">Delete this {pending.kind}?</h3>
+            <p className="sub">
+              The {pending.kind} from <b>{pending.item.name}</b> will be removed for good. This can't be undone.
+            </p>
+            <blockquote>{pending.kind === 'message' ? pending.item.message : pending.item.text}</blockquote>
+            <div className="btn-row">
+              <button className="btn btn-ghost" autoFocus onClick={() => setPending(null)} disabled={deleting}>Cancel</button>
+              <button className="btn btn-danger" onClick={confirmDelete} disabled={deleting}>
+                <Trash2 size={15} /> {deleting ? 'Deleting…' : 'Delete'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }
