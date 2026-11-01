@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react'
 import { ArrowDown } from 'lucide-react'
 import Lanyard from './Lanyard.jsx'
 import Reveal from './Reveal.jsx'
-import { profile } from '../data.js'
+import { FaGithub, FaLinkedin, FaFacebook, FaTelegram } from 'react-icons/fa'
+import { profile, socials } from '../data.js'
+
+const heroIcons = { github: FaGithub, linkedin: FaLinkedin, facebook: FaFacebook, telegram: FaTelegram }
 
 function useTypewriter(words) {
   const [text, setText] = useState('')
@@ -39,8 +42,15 @@ export default function Hero() {
           <Reveal delay={240}>
             <div className="typer">{typed}<span className="caret">_</span></div>
             <p className="lead">{profile.heroText}</p>
-            <div className="tags">
-              {profile.heroTags.map((t) => <span className="tag" key={t}>{t}</span>)}
+            <div className="hero-socials">
+              {socials.filter((s) => heroIcons[s.icon]).map((s) => {
+                const Icon = heroIcons[s.icon]
+                return (
+                  <a key={s.name} className="hero-social" href={s.url} target="_blank" rel="noreferrer" aria-label={s.name} title={s.name}>
+                    <Icon />
+                  </a>
+                )
+              })}
             </div>
             <div className="mono-notes">
               <div><span>↓</span> explore my work below</div>
