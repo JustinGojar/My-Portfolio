@@ -4,12 +4,12 @@
 // ─────────────────────────────────────────────────────────────
 
 export const profile = {
-  brand: 'gojar.portfolio.qa',
+  brand: 'justin.dev',
   siteUrl: 'gojar-portfolio.pages.dev',
   name: 'Justin L. Gojar',
   firstName: 'Justin',
   photo: '/avatar.webp',
-  cv: 'https://drive.google.com/file/d/1ikbMO7qcCj4WtOh6mGd_f_5qoWk_3JcL/view?usp=drivesdk',
+  cv: 'https://drive.google.com/file/d/1mRELQQ7i9zHVEPE7eDc5N3Xen0ZmaVJ1/view?usp=sharing',
   email: 'gojarjustinofficial@gmail.com',
   location: 'Bulan, Sorsogon, Philippines',
   headline: ['QA', 'Tester'],
