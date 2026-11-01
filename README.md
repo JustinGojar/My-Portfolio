@@ -34,3 +34,18 @@ certificates, tech stack, social links).
 Push to GitHub, import the repo on Vercel; it detects Vite automatically
 (build: `npm run build`, output: `dist`).
 # dev.portfolio
+
+## Contact messages & admin page
+
+The **Send Message** form posts to a Cloudflare Pages Function (`functions/api/messages.js`),
+which stores each message in Cloudflare KV. Read them at **`/#/admin`**.
+
+One-time setup in the Cloudflare dashboard:
+
+1. **Storage & Databases → KV → Create** a namespace (e.g. `portfolio-messages`).
+2. **Workers & Pages → gojar-portfolio → Settings → Bindings → Add → KV namespace**:
+   variable name `MESSAGES`, pick the namespace. Do this for **Production** (and Preview if you want).
+3. **Settings → Variables and secrets → Add**: type **Secret**, name `ADMIN_PASSWORD`, your password.
+4. Redeploy (Deployments → latest production → Retry deployment).
+
+Local test: `npm run build && npx wrangler pages dev dist --kv MESSAGES --binding ADMIN_PASSWORD=test`

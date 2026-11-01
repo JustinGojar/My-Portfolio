@@ -47,22 +47,37 @@ const ago = (t) => {
 }
 
 function ContactForm({ toast }) {
-  const [f, setF] = useState({ name: '', email: '', message: '' })
+  const empty = { name: '', email: '', message: '', website: '' }
+  const [f, setF] = useState(empty)
+  const [sending, setSending] = useState(false)
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value })
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Portfolio message from ${f.name}`)
-    const body = encodeURIComponent(`${f.message}\n\n— ${f.name} (${f.email})`)
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
-    toast('Opening your email app…')
-    setF({ name: '', email: '', message: '' })
+    setSending(true)
+    try {
+      const res = await fetch('/api/messages', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(f),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || 'Could not send your message.')
+      toast('Message sent! Thank you.')
+      setF(empty)
+    } catch (err) {
+      toast(err.message || 'Could not send your message.')
+    } finally {
+      setSending(false)
+    }
   }
   return (
     <form onSubmit={submit}>
-      <div className="field"><User size={17} /><input required placeholder="Your Name" value={f.name} onChange={set('name')} /></div>
-      <div className="field"><Mail size={17} /><input required type="email" placeholder="Your Email" value={f.email} onChange={set('email')} /></div>
-      <div className="field"><MessageSquare size={17} /><textarea required placeholder="Your Message" value={f.message} onChange={set('message')} /></div>
-      <button className="submit" type="submit"><Send size={16} /> Send Message</button>
+      <div className="field"><User size={17} /><input required maxLength={80} placeholder="Your Name" value={f.name} onChange={set('name')} /></div>
+      <div className="field"><Mail size={17} /><input required maxLength={120} type="email" placeholder="Your Email" value={f.email} onChange={set('email')} /></div>
+      <div className="field"><MessageSquare size={17} /><textarea required maxLength={4000} placeholder="Your Message" value={f.message} onChange={set('message')} /></div>
+      {/* honeypot: hidden from people, filled in by spam bots */}
+      <input className="hp" tabIndex={-1} autoComplete="off" aria-hidden="true" value={f.website} onChange={set('website')} />
+      <button className="submit" type="submit" disabled={sending}><Send size={16} /> {sending ? 'Sending…' : 'Send Message'}</button>
     </form>
   )
 }

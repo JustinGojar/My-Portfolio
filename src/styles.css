@@ -429,3 +429,43 @@ img { display: block; max-width: 100%; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; filter: none; }
 }
+
+/* ── Contact honeypot ────────────────────────────────────── */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+/* ── Admin (#/admin) ─────────────────────────────────────── */
+.admin { min-height: 100vh; padding: 60px 16px 80px; position: relative; z-index: 1; }
+.admin-login { max-width: 400px; margin: 12vh auto 0; text-align: center; }
+.admin-lock { width: 46px; height: 46px; margin: 0 auto 14px; border-radius: 50%; display: grid; place-items: center; background: var(--red-soft); color: var(--red); box-shadow: var(--red-glow); }
+.admin-back { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--muted); font-size: 13px; text-decoration: none; }
+.admin-back:hover { color: var(--text); }
+.admin-error { color: var(--red-hot); font-size: 13px; margin: 0 0 12px; }
+.admin-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 26px; }
+.admin-head .sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
+.admin-head .btn { cursor: pointer; font: inherit; }
+.admin-list { display: grid; gap: 12px; }
+.admin-empty { display: grid; place-items: center; gap: 10px; color: var(--muted); padding: 50px; }
+.admin-msg { padding: 0; }
+.admin-msg summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 8px auto minmax(0, 1fr) auto; grid-template-areas: 'dot name email time' '. snip snip snip'; align-items: center; gap: 6px 14px; padding: 18px 22px; }
+.admin-msg summary .dot { grid-area: dot; }
+.admin-msg summary b { grid-area: name; }
+.admin-msg summary .email { grid-area: email; }
+.admin-msg summary time { grid-area: time; }
+.admin-msg summary .snippet { grid-area: snip; }
+.admin-msg summary::-webkit-details-marker { display: none; }
+.admin-msg .dot { width: 8px; height: 8px; border-radius: 50%; background: transparent; }
+.admin-msg.unread .dot { background: var(--red); box-shadow: var(--red-glow); }
+.admin-msg.unread b { color: #fff; }
+.admin-msg .email { color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.admin-msg time { color: var(--dim); font-size: 12px; font-family: var(--font-mono); white-space: nowrap; }
+.admin-msg .snippet { color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.admin-msg[open] .snippet { display: none; }
+.admin-msg[open] summary { grid-template-areas: 'dot name email time'; }
+.admin-msg[open] summary { border-bottom: 1px solid var(--border); }
+.admin-body { padding: 18px 22px 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text); font-size: 15px; }
+.admin-msg .btn-row { padding: 18px 22px 22px; }
+.admin-msg .btn { cursor: pointer; font: inherit; font-size: 14px; }
+.spin { animation: spin 1s linear infinite; }
+@media (max-width: 600px) {
+  .admin-msg summary, .admin-msg[open] summary { grid-template-columns: 8px minmax(0, 1fr); grid-template-areas: 'dot name' '. email' '. snip' '. time'; }
+}
