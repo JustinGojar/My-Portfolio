@@ -8,11 +8,13 @@ import ProjectDetail from './components/ProjectDetail.jsx'
 import Journey from './components/Journey.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import Admin from './components/Admin.jsx'
 import { projects } from './data.js'
 
 // Tiny hash router: "#/project/<slug>" opens a project page, anything else is the home page.
 function useRoute() {
   const read = () => {
+    if (/^#\/admin\b/.test(window.location.hash)) return { page: 'admin' }
     const m = window.location.hash.match(/^#\/project\/([\w-]+)/)
     return m ? { page: 'project', slug: m[1] } : { page: 'home' }
   }
@@ -54,8 +56,10 @@ export default function App() {
   return (
     <>
       <div className="bg" aria-hidden="true" />
-      {!introDone && <Intro onDone={() => setIntroDone(true)} />}
-      {project ? (
+      {!introDone && route.page !== 'admin' && <Intro onDone={() => setIntroDone(true)} />}
+      {route.page === 'admin' ? (
+        <Admin />
+      ) : project ? (
         <ProjectDetail project={project} />
       ) : (
         <>
