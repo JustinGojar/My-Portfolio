@@ -34,10 +34,10 @@ export const profile = {
     'Design Thinker',
   ],
   heroText:
-    "Hi! I'm Justin, a developer who loves turning ideas into products people enjoy using. I care about clean code, thoughtful design and the small details — the micro-interactions that make an interface feel alive.",
+    "Hi! I'm Justin, a QA tester who makes sure software works the way people expect it to. I test web apps end to end, from UI details and user flows to APIs, performance and security, and I document every bug clearly so it gets fixed fast.",
   about: [
-    'An aspiring web and app developer on a journey of learning, building, and growing. I turn ideas into simple, functional digital experiences while exploring new technologies and developing my skills one project at a time.',
-    'I work across the stack: React on the front end, Node.js and serverless functions on the back end, and databases that keep everything in sync. I am always learning and always shipping.',
+    'An aspiring QA tester and IT student from Bulan, Sorsogon, on a journey of learning, testing and growing. I care about quality: catching bugs early, writing clear test cases and making sure every feature works for everyone who uses it.',
+    'On my capstone project, Bulan Senior Care, I handled testing across the system: API checks with Postman, load testing with JMeter, performance and accessibility audits with Lighthouse, and security scans with OWASP ZAP. I also build with React, so I understand the code behind what I test.',
   ],
   quote: 'Turning ideas into simple, functional and meaningful digital experiences.',
 }
