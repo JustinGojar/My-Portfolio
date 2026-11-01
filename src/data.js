@@ -109,7 +109,8 @@ export const techStack = [
   { name: 'Railway', icon: 'railway' },
   { name: 'Netlify', icon: 'netlify' },
   { name: 'Figma', icon: 'figma' },
-  { name: 'Claude Code / Codex', icon: 'claude' },
+  { name: 'Claude Code', icon: 'claude' },
+  { name: 'Codex', icon: 'codex' },
 ]
 
 export const experience = [
