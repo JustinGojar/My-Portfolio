@@ -4,7 +4,6 @@ import Reveal from './Reveal.jsx'
 import TechIcon from './TechIcon.jsx'
 import { profile, socials } from '../data.js'
 
-const KEY = 'portfolio-comments-v1'
 const pinned = {
   id: 'pinned',
   name: profile.name,
@@ -13,14 +12,16 @@ const pinned = {
   pinned: true,
 }
 
-// Comments are saved in this browser (localStorage). Hook up a backend
-// (e.g. Supabase or Firebase) later if you want everyone to see them.
-const load = () => {
-  try { return JSON.parse(localStorage.getItem(KEY)) || [] } catch { return [] }
+// Comments live on the server (functions/api/comments.js); which ones this
+// visitor has liked is remembered in their browser only.
+const LIKED = 'portfolio-liked-v1'
+const loadLiked = () => {
+  try { return JSON.parse(localStorage.getItem(LIKED)) || {} } catch { return {} }
 }
-const save = (list) => {
-  try { localStorage.setItem(KEY, JSON.stringify(list)) } catch { /* storage full or blocked */ }
+const saveLiked = (v) => {
+  try { localStorage.setItem(LIKED, JSON.stringify(v)) } catch { /* blocked */ }
 }
+const PAGE = 3
 
 // shrink uploaded images so they fit in storage
 const shrink = (file) =>
@@ -83,27 +84,80 @@ function ContactForm({ toast }) {
 }
 
 function Comments({ toast }) {
-  const [list, setList] = useState(load)
-  const [liked, setLiked] = useState({})
+  const [list, setList] = useState([])
+  const [cursor, setCursor] = useState(null)
+  const [status, setStatus] = useState('loading') // loading | ready | error
+  const [more, setMore] = useState(false)
+  const [liked, setLiked] = useState(loadLiked)
   const [name, setName] = useState('')
   const [text, setText] = useState('')
   const [img, setImg] = useState(null)
+  const [hp, setHp] = useState('')
+  const [posting, setPosting] = useState(false)
 
-  useEffect(() => save(list), [list])
+  const fetchPage = async (after) => {
+    const q = new URLSearchParams({ limit: PAGE })
+    if (after) q.set('cursor', after)
+    const res = await fetch(`/api/comments?${q}`)
+    if (!res.ok) throw new Error()
+    return res.json()
+  }
 
-  const post = (e) => {
+  useEffect(() => {
+    fetchPage()
+      .then((d) => { setList(d.comments); setCursor(d.cursor); setStatus('ready') })
+      .catch(() => setStatus('error'))
+  }, [])
+
+  useEffect(() => saveLiked(liked), [liked])
+
+  const showMore = async () => {
+    setMore(true)
+    try {
+      const d = await fetchPage(cursor)
+      setList((l) => [...l, ...d.comments.filter((c) => !l.some((x) => x.id === c.id))])
+      setCursor(d.cursor)
+    } catch {
+      toast('Could not load more comments.')
+    } finally {
+      setMore(false)
+    }
+  }
+
+  const post = async (e) => {
     e.preventDefault()
     if (!name.trim() || !text.trim()) return
-    setList([{ id: Date.now(), name: name.trim(), text: text.trim(), img, likes: 0, t: Date.now() }, ...list])
-    setName('')
-    setText('')
-    setImg(null)
-    toast('Comment posted!')
+    setPosting(true)
+    try {
+      const res = await fetch('/api/comments', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ name, text, img, website: hp }),
+      })
+      const d = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(d.error || 'Could not post your comment.')
+      if (d.comment) setList((l) => [d.comment, ...l])
+      setName('')
+      setText('')
+      setImg(null)
+      toast('Comment posted!')
+    } catch (err) {
+      toast(err.message || 'Could not post your comment.')
+    } finally {
+      setPosting(false)
+    }
   }
+
   const like = (c) => {
     const on = !liked[c.id]
-    setLiked({ ...liked, [c.id]: on })
-    if (!c.pinned) setList(list.map((x) => (x.id === c.id ? { ...x, likes: x.likes + (on ? 1 : -1) } : x)))
+    setLiked((v) => ({ ...v, [c.id]: on }))
+    if (c.pinned) return
+    setList((l) => l.map((x) => (x.id === c.id ? { ...x, likes: Math.max(0, x.likes + (on ? 1 : -1)) } : x)))
+    fetch(`/api/comments?id=${encodeURIComponent(c.id)}`, {
+      method: 'PATCH',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ like: on ? 1 : -1 }),
+    }).catch(() => {})
   }
 
   const all = [pinned, ...list]
@@ -112,6 +166,7 @@ function Comments({ toast }) {
       <form onSubmit={post}>
         <div className="field plain"><input placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} maxLength={40} /></div>
         <div className="field plain"><textarea placeholder="Your Comment" value={text} onChange={(e) => setText(e.target.value)} maxLength={400} /></div>
+        <input className="hp" tabIndex={-1} autoComplete="off" aria-hidden="true" value={hp} onChange={(e) => setHp(e.target.value)} />
         <label className="upload">
           <Upload size={16} /> Upload Image <small style={{ marginLeft: 'auto', color: 'var(--dim)' }}>optional</small>
           <input type="file" accept="image/*" onChange={async (e) => e.target.files[0] && setImg(await shrink(e.target.files[0]))} />
@@ -119,7 +174,9 @@ function Comments({ toast }) {
         {img && (
           <div className="upload-prev"><img src={img} alt="" /> Image attached <button type="button" onClick={() => setImg(null)}>remove</button></div>
         )}
-        <button className="submit" type="submit" disabled={!name.trim() || !text.trim()}>Post Comment</button>
+        <button className="submit" type="submit" disabled={posting || !name.trim() || !text.trim()}>
+          {posting ? 'Posting…' : 'Post Comment'}
+        </button>
       </form>
 
       <div className="comment-list">
@@ -133,13 +190,20 @@ function Comments({ toast }) {
                 {c.t && <span className="when">{ago(c.t)}</span>}
               </div>
               <div className="text">{c.text}</div>
-              {c.img && <img className="img" src={c.img} alt="" />}
+              {c.img && <img className="img" src={c.img} alt="" loading="lazy" />}
             </div>
             <button className={`like ${liked[c.id] ? 'on' : ''}`} onClick={() => like(c)} aria-label="Like">
               <Heart size={13} /> {c.likes + (c.pinned && liked[c.id] ? 1 : 0)}
             </button>
           </div>
         ))}
+        {status === 'loading' && <p className="comment-note">Loading comments…</p>}
+        {status === 'error' && <p className="comment-note">Comments could not be loaded right now.</p>}
+        {cursor && (
+          <button type="button" className="comment-more" onClick={showMore} disabled={more}>
+            {more ? 'Loading…' : 'Show more comments'}
+          </button>
+        )}
       </div>
     </>
   )

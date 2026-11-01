@@ -7,30 +7,14 @@
 // Needs two settings in the Cloudflare Pages project:
 //   MESSAGES        KV namespace binding
 //   ADMIN_PASSWORD  secret (encrypted variable)
-
-const json = (data, status = 200) =>
-  new Response(JSON.stringify(data), {
-    status,
-    headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
-  })
-
-const sha256 = async (s) => crypto.subtle.digest('SHA-256', new TextEncoder().encode(s))
-
-async function isAdmin(request, env) {
-  // trim both sides: a stray space or newline from copy-paste shouldn't lock you out
-  const given = (request.headers.get('authorization') || '').replace(/^Bearer /, '').trim()
-  const [a, b] = await Promise.all([sha256(given), sha256(env.ADMIN_PASSWORD.trim())])
-  return crypto.subtle.timingSafeEqual(a, b)
-}
-
-const clean = (v, max) => (typeof v === 'string' ? v.trim().slice(0, max) : '')
+import { json, requireAdmin, clean, readJson, newKey, noStorage } from '../../server/lib.js'
 
 export async function onRequest({ request, env }) {
-  if (!env.MESSAGES) return json({ error: 'Message storage is not set up yet.' }, 503)
+  if (!env.MESSAGES) return noStorage()
 
   if (request.method === 'POST') {
-    let body
-    try { body = await request.json() } catch { return json({ error: 'Invalid request.' }, 400) }
+    const body = await readJson(request)
+    if (!body) return json({ error: 'Invalid request.' }, 400)
     if (body.website) return json({ ok: true }) // honeypot: bots fill hidden fields
     const name = clean(body.name, 80)
     const email = clean(body.email, 120)
@@ -38,17 +22,12 @@ export async function onRequest({ request, env }) {
     if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return json({ error: 'Please fill in your name, a valid email and a message.' }, 400)
     }
-    const t = Date.now()
-    // newest-first ordering: KV lists keys alphabetically
-    const id = `msg:${String(9e15 - t).padStart(16, '0')}:${crypto.randomUUID().slice(0, 8)}`
-    await env.MESSAGES.put(id, JSON.stringify({ name, email, message, t, read: false }))
+    await env.MESSAGES.put(newKey('msg'), JSON.stringify({ name, email, message, t: Date.now(), read: false }))
     return json({ ok: true }, 201)
   }
 
-  if (!env.ADMIN_PASSWORD) {
-    return json({ error: 'ADMIN_PASSWORD is not set in Cloudflare (or the site was not redeployed after adding it).' }, 503)
-  }
-  if (!(await isAdmin(request, env))) return json({ error: 'Wrong password.' }, 401)
+  const denied = await requireAdmin(request, env)
+  if (denied) return denied
 
   if (request.method === 'GET') {
     const { keys } = await env.MESSAGES.list({ prefix: 'msg:', limit: 200 })

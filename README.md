@@ -40,6 +40,9 @@ Push to GitHub, import the repo on Vercel; it detects Vite automatically
 The **Send Message** form posts to a Cloudflare Pages Function (`functions/api/messages.js`),
 which stores each message in Cloudflare KV. Read them at **`/admin`**.
 
+Comments (`functions/api/comments.js`) are stored in the same KV namespace and
+shown to every visitor (3 at a time); delete them from the **Comments** tab in `/admin`.
+
 One-time setup in the Cloudflare dashboard:
 
 1. **Storage & Databases → KV → Create** a namespace (e.g. `portfolio-messages`).
