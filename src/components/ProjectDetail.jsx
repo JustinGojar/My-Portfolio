@@ -12,7 +12,7 @@ export default function ProjectDetail({ project: p }) {
   return (
     <div className="detail">
       <div className="container">
-        <a className="back" href="#portfolio"><ArrowLeft size={15} /> Back</a>
+        <a className="back" href="/portfolio"><ArrowLeft size={15} /> Back</a>
         <div className="grid">
           <div>
             <Reveal as="h1">{p.title}</Reveal>

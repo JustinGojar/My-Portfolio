@@ -61,7 +61,7 @@ export default function Portfolio() {
                   ) : (
                     <span className="muted">No Link</span>
                   )}
-                  <a className="pill-btn" href={`#/project/${p.slug}`}>Details <ArrowRight size={13} /></a>
+                  <a className="pill-btn" href={`/project/${p.slug}`}>Details <ArrowRight size={13} /></a>
                 </div>
               </article>
             ))}

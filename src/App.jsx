@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Intro from './components/Intro.jsx'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
@@ -11,18 +11,43 @@ import Footer from './components/Footer.jsx'
 import Admin from './components/Admin.jsx'
 import { projects } from './data.js'
 
-// Tiny hash router: "#/project/<slug>" opens a project page, anything else is the home page.
+// Tiny path router: "/project/<slug>" opens a project page, "/admin" the inbox,
+// "/<section>" scrolls the home page to that section. Cloudflare Pages serves
+// index.html for every unknown path, so these URLs also work on reload.
+const parse = () => {
+  const path = window.location.pathname.replace(/\/+$/, '')
+  if (path === '/admin') return { page: 'admin' }
+  const m = path.match(/^\/project\/([\w-]+)$/)
+  if (m) return { page: 'project', slug: m[1] }
+  return { page: 'home', section: path.slice(1) }
+}
+
+// Old links used "#portfolio" or "#/project/x": turn them into clean paths.
+const legacy = window.location.hash.replace(/^#\/?/, '')
+if (legacy) window.history.replaceState(null, '', legacy === 'home' ? '/' : `/${legacy}`)
+
 function useRoute() {
-  const read = () => {
-    if (/^#\/admin\b/.test(window.location.hash)) return { page: 'admin' }
-    const m = window.location.hash.match(/^#\/project\/([\w-]+)/)
-    return m ? { page: 'project', slug: m[1] } : { page: 'home' }
-  }
-  const [route, setRoute] = useState(read)
+  const [route, setRoute] = useState(() => ({ ...parse(), n: 0 }))
   useEffect(() => {
-    const on = () => setRoute(read())
-    window.addEventListener('hashchange', on)
-    return () => window.removeEventListener('hashchange', on)
+    const go = () => setRoute((r) => ({ ...parse(), n: r.n + 1 }))
+    // intercept clicks on internal links ("/portfolio", "/project/x") so the
+    // page doesn't reload
+    const click = (e) => {
+      const a = e.target.closest('a[href^="/"]')
+      if (!a || a.target || a.hasAttribute('download') || e.defaultPrevented) return
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+      const href = a.getAttribute('href')
+      if (/^\/(api|assets|projects|certificates)\//.test(href) || /\.\w+$/.test(href)) return
+      e.preventDefault()
+      if (href !== window.location.pathname) window.history.pushState(null, '', href)
+      go()
+    }
+    document.addEventListener('click', click)
+    window.addEventListener('popstate', go)
+    return () => {
+      document.removeEventListener('click', click)
+      window.removeEventListener('popstate', go)
+    }
   }, [])
   return route
 }
@@ -41,15 +66,19 @@ export default function App() {
     return () => window.removeEventListener('pointermove', move)
   }, [])
 
-  // returning from a project page: jump back to the portfolio section
+  // scroll to the section named in the path (smoothly when already on the home page)
+  const prevPage = useRef(route.page)
   useEffect(() => {
-    if (route.page === 'home') {
-      const id = window.location.hash.slice(1)
-      if (id) requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView())
-    } else {
-      window.scrollTo(0, 0)
+    const samePage = prevPage.current === route.page
+    prevPage.current = route.page
+    if (route.page !== 'home' || !route.section) {
+      window.scrollTo({ top: 0, behavior: samePage && route.n ? 'smooth' : 'auto' })
+      return
     }
-  }, [route.page])
+    requestAnimationFrame(() =>
+      document.getElementById(route.section)?.scrollIntoView({ behavior: samePage ? 'smooth' : 'auto' })
+    )
+  }, [route])
 
   const project = route.page === 'project' && projects.find((p) => p.slug === route.slug)
 

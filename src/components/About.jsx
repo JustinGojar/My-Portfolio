@@ -30,7 +30,7 @@ export default function About() {
                 <a className="btn btn-primary" href={profile.cv} target="_blank" rel="noreferrer">
                   <Eye size={15} /> View CV
                 </a>
-                <a className="btn btn-ghost" href="#portfolio" onClick={() => goTab('projects')}>
+                <a className="btn btn-ghost" href="/portfolio" onClick={() => goTab('projects')}>
                   <ArrowUpRight size={15} /> View Projects
                 </a>
               </div>
@@ -46,7 +46,7 @@ export default function About() {
         <div className="stats">
           {stats.map(({ icon: Icon, label, num, tab }, i) => (
             <Reveal key={label} delay={i * 120}>
-              <a className="stat" href="#portfolio" onClick={() => goTab(tab)}>
+              <a className="stat" href="/portfolio" onClick={() => goTab(tab)}>
                 <div className="ico"><Icon size={18} /></div>
                 <div className="num">{num}</div>
                 <div className="label">{label}</div>
