@@ -13,7 +13,7 @@ export const profile = {
   email: 'gojarjustinofficial@gmail.com',
   location: 'Bulan, Sorsogon, Philippines',
   headline: ['QA', 'Tester'],
-  cardRole: 'Frontend Dev · Web & App', // small text on the ID card
+  cardRole: 'QA Tester', // small text on the ID card
   roles: [
     'QA Tester',
     'Manual Tester',
