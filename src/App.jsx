@@ -5,6 +5,7 @@ import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
 import Portfolio from './components/Portfolio.jsx'
 import ProjectDetail from './components/ProjectDetail.jsx'
+import Journey from './components/Journey.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import { projects } from './data.js'
@@ -63,6 +64,7 @@ export default function App() {
             <Hero />
             <About />
             <Portfolio />
+            <Journey />
             <Contact />
           </main>
           <Footer />

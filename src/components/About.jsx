@@ -22,10 +22,10 @@ export default function About() {
               {parts.join(' ')} <span className="last">{last}</span>
             </Reveal>
             <Reveal delay={200}>
-              <p className="body">{profile.aboutText}</p>
+              {profile.about.map((t) => <p className="body" key={t}>{t}</p>)}
               <div className="quote">“{profile.quote}”</div>
               <div className="btn-row">
-                <a className="btn btn-primary" href={profile.cv} download>
+                <a className="btn btn-primary" href={profile.cv} target="_blank" rel="noreferrer">
                   <FileText size={15} /> Download CV
                 </a>
                 <a className="btn btn-ghost" href="#portfolio" onClick={() => goTab('projects')}>
