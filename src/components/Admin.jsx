@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Lock, LogOut, RefreshCw, Trash2, Reply, Inbox, ArrowLeft } from 'lucide-react'
+import { profile } from '../data.js'
+import { Lock, LogOut, RefreshCw, Trash2, Mail, Inbox, ArrowLeft } from 'lucide-react'
 
 const KEY = 'portfolio-admin-pass'
 const getPass = () => {
@@ -21,6 +22,15 @@ async function api(pass, method = 'GET', id) {
     throw err
   }
   return data
+}
+
+// Gmail compose window, addressed to the sender, with their message quoted
+const gmailReply = (m) => {
+  const quoted = m.message.split('\n').map((l) => `> ${l}`).join('\n')
+  const body = `\n\n\nOn ${when(m.t)}, ${m.name} <${m.email}> wrote:\n${quoted}`
+  // authuser: open in the portfolio's Gmail account even if several are signed in
+  const q = { authuser: profile.email, view: 'cm', fs: '1', to: m.email, su: 'Re: your message on my portfolio', body }
+  return `https://mail.google.com/mail/?${Object.entries(q).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&')}`
 }
 
 const when = (t) =>
@@ -132,11 +142,13 @@ export default function Admin() {
                   <time>{when(m.t)}</time>
                 </summary>
                 <p className="admin-body">{m.message}</p>
-                <div className="btn-row">
-                  <a className="btn btn-primary" href={`mailto:${m.email}?subject=${encodeURIComponent('Re: your message on my portfolio')}`}>
-                    <Reply size={15} /> Reply by email
+                <div className="btn-row admin-actions">
+                  <a className="btn btn-primary" href={gmailReply(m)} target="_blank" rel="noreferrer">
+                    <Mail size={15} /> Open Gmail
                   </a>
-                  <button className="btn btn-ghost" onClick={() => remove(m)}><Trash2 size={15} /> Delete</button>
+                  <button className="btn btn-ghost icon-btn" onClick={() => remove(m)} aria-label="Delete message" title="Delete">
+                    <Trash2 size={16} />
+                  </button>
                 </div>
               </details>
             ))}

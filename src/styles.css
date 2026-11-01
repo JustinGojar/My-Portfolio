@@ -463,7 +463,9 @@ img { display: block; max-width: 100%; }
 .admin-msg[open] summary { grid-template-areas: 'dot name email time'; }
 .admin-msg[open] summary { border-bottom: 1px solid var(--border); }
 .admin-body { padding: 18px 22px 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text); font-size: 15px; }
-.admin-msg .btn-row { padding: 18px 22px 22px; }
+.admin-msg .btn-row { padding: 18px 22px 22px; justify-content: flex-end; }
+.admin-msg .icon-btn { padding: 0; width: 44px; height: 44px; justify-content: center; }
+.admin-msg .icon-btn:hover { color: var(--red); }
 .admin-msg .btn { cursor: pointer; font: inherit; font-size: 14px; }
 .spin { animation: spin 1s linear infinite; }
 @media (max-width: 600px) {
