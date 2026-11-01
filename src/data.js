@@ -39,7 +39,7 @@ export const profile = {
     'An aspiring QA tester and IT student from Bulan, Sorsogon, on a journey of learning, testing and growing. I care about quality: catching bugs early, writing clear test cases and making sure every feature works for everyone who uses it.',
     'On my capstone project, Bulan Senior Care, I handled testing across the system: API checks with Postman, load testing with JMeter, performance and accessibility audits with Lighthouse, and security scans with OWASP ZAP. I also build with React, so I understand the code behind what I test.',
   ],
-  quote: 'Turning ideas into simple, functional and meaningful digital experiences.',
+  quote: 'Quality is not an accident. I test every detail so it works for everyone who uses it.',
 }
 
 export const projects = [
