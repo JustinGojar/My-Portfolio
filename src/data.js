@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────
 
 export const profile = {
-  brand: 'justin.dev',
+  brand: 'gojar.portfolio.qa',
   siteUrl: 'gojar-portfolio.pages.dev',
   name: 'Justin L. Gojar',
   firstName: 'Justin',

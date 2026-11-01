@@ -26,11 +26,13 @@ export default function Navbar() {
     return () => io.disconnect()
   }, [])
 
-  const [name, tld] = profile.brand.split('.')
+  const parts = profile.brand.split('.')
   return (
     <nav className={`nav ${open ? 'open' : ''}`}>
       <a href="#home" className="brand">
-        {name}<b>.</b>{tld}
+        {parts.map((part, i) => (
+          <span key={i}>{i > 0 && <b>.</b>}{part}</span>
+        ))}
       </a>
       <button className="nav-toggle" onClick={() => setOpen(!open)} aria-label="Toggle menu">
         {open ? <X size={20} /> : <Menu size={20} />}

@@ -76,7 +76,7 @@ export default function Lanyard() {
       >
         <div ref={pivotRef} style={{ width: 0, height: 0 }} />
         <div className="strap">
-          {[0, 1, 2].map((i) => <span key={i}>{strapText}</span>)}
+          {[0, 1].map((i) => <span key={i}>{strapText}</span>)}
         </div>
         <div className="clip" />
         <div className="clip-ring" />
