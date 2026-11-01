@@ -22,8 +22,6 @@ export const profile = {
     'Web Developer',
     'App Developer',
     'Tech Explorer',
-    'Digital Creator',
-    'Interface Innovator',
     'Design Thinker',
   ],
   heroText:
