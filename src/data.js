@@ -75,20 +75,6 @@ export const projects = [
     live: 'https://equalize-gender.vercel.app/',
     repo: 'https://github.com/JustinGojar/Equalize-Gender',
   },
-  {
-    slug: 'portfolio',
-    title: 'Portfolio Website',
-    category: 'Front-End',
-    image: '/projects/portfolio.svg',
-    short:
-      'This site: a dark, neon red portfolio with a swinging ID card, tabbed showcase and a comment wall.',
-    description:
-      'My personal portfolio built in React. It features an intro splash, a draggable lanyard ID card with spring physics, a tabbed showcase for projects, certificates and tech stack, and a contact section with a comment wall.',
-    tech: ['React', 'Vite', 'CSS'],
-    features: ['Fully animated', 'Draggable lanyard ID card', 'Responsive on every screen'],
-    live: '',
-    repo: 'https://github.com/JustinGojar/dev.portfolio',
-  },
 ]
 
 export const certificates = [
