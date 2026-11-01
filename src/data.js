@@ -13,15 +13,24 @@ export const profile = {
   email: 'gojarjustinofficial@gmail.com',
   location: 'Bulan, Sorsogon, Philippines',
   headline: ['QA', 'Tester'],
-  cardRole: 'Frontend Dev · Web & App', // small text on the ID card
+  cardRole: 'QA Tester', // small text on the ID card
   roles: [
-    'Frontend Developer',
-    'Fast Learner',
+    'QA Tester',
+    'Manual Tester',
+    'Bug Hunter',
+    'Test Case Writer',
+    'API Tester',
+    'Performance Tester',
+    'Security Tester',
+    'Detail-Oriented',
+    'Quality Advocate',
     'Problem Solver',
     'Creative Vibe Coder',
     'Web Developer',
     'App Developer',
     'Tech Explorer',
+    'Digital Creator',
+    'Interface Innovator',
     'Design Thinker',
   ],
   heroText:
