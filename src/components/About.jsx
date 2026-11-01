@@ -19,7 +19,9 @@ export default function About() {
           <div>
             <Reveal className="eyebrow">About me</Reveal>
             <Reveal as="h2" className="display" delay={100}>
-              {parts.join(' ')} <span className="last">{last}</span>
+              {parts.join(' ')} <span className="last">
+                {last.split(/(j)/).map((c, i) => (c === 'j' ? <span key={i} className="glyph-j">j</span> : c))}
+              </span>
             </Reveal>
             <Reveal delay={200}>
               {profile.about.map((t) => <p className="body" key={t}>{t}</p>)}
