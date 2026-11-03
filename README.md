@@ -6,11 +6,6 @@
 
 Personal portfolio built with React and Vite, deployed on Cloudflare.
 
-[![Live Site](https://img.shields.io/badge/Live_Site-gojar--portfolio.pages.dev-ff2d55?style=for-the-badge&logo=cloudflare&logoColor=white)](https://gojar-portfolio.pages.dev)
-[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
-[![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
-[![Cloudflare](https://img.shields.io/badge/Cloudflare-Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com)
-
 <img src="docs/preview.webp" alt="Portfolio preview: About section" width="100%" />
 
 </div>
@@ -140,20 +135,6 @@ Test the functions locally:
 ```bash
 npm run build && npx wrangler pages dev dist --kv MESSAGES --binding ADMIN_PASSWORD=test
 ```
-
----
-
-## Contact
-
-<p>
-  <a href="mailto:gojarjustinofficial@gmail.com"><img src="https://img.shields.io/badge/Email-gojarjustinofficial%40gmail.com-ff2d55?style=flat-square&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://github.com/justingojar"><img src="https://img.shields.io/badge/GitHub-justingojar-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" /></a>
-  <a href="https://www.linkedin.com/in/justin-gojar-4b88583b3"><img src="https://img.shields.io/badge/LinkedIn-Justin_Gojar-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="https://www.facebook.com/gojar.justin"><img src="https://img.shields.io/badge/Facebook-gojar.justin-1877F2?style=flat-square&logo=facebook&logoColor=white" alt="Facebook" /></a>
-  <a href="https://t.me/parzival609"><img src="https://img.shields.io/badge/Telegram-parzival609-26A5E4?style=flat-square&logo=telegram&logoColor=white" alt="Telegram" /></a>
-</p>
-
-📍 Bulan, Sorsogon, Philippines
 
 ---
 
