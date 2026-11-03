@@ -78,15 +78,19 @@ A gender awareness and inclusion platform on gender-based violence and harassmen
 ## Project Structure
 
 ```
+├── docs/               README preview image
 ├── functions/api/      Cloudflare Pages Functions (messages, comments)
-├── public/             Static assets: avatar, project images, certificates, icons
+├── server/             Helpers shared by the functions (admin auth, JSON responses)
+├── public/             Static assets: avatar, project images, certificates, icons, service worker
 ├── src/
 │   ├── components/     React components (Hero, About, Portfolio, Journey, Contact, Admin…)
+│   │   └── TechIcon.jsx  Logos for the Tech Stack tab and social links
 │   ├── data.js         All site content: profile, projects, certificates, tech stack, socials
 │   ├── App.jsx
 │   └── styles.css      Theme colors as CSS variables (--red, --bg, …)
 ├── index.html
-└── vite.config.js
+├── vite.config.js
+└── wrangler.jsonc      Cloudflare deployment config
 ```
 
 ---
@@ -115,6 +119,7 @@ Everything shown on the site comes from **`src/data.js`**:
 - **Profile:** name, roles, about text, quote, CV link and email
 - **Projects:** add images to `public/projects/` and set each project's `image`, `live` and `repo`
 - **Certificates:** add scans to `public/certificates/` and list them in `certificates`
+- **Tech stack:** add an entry to `techStack`; its `icon` key must exist in `src/components/TechIcon.jsx`
 - **Socials:** update URLs and handles in `socials`
 - **Colors:** edit the CSS variables at the top of `src/styles.css`
 
