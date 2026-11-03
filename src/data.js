@@ -111,6 +111,7 @@ export const techStack = [
   { name: 'Figma', icon: 'figma' },
   { name: 'Claude Code', icon: 'claude' },
   { name: 'Codex', icon: 'codex' },
+  { name: 'Postman', icon: 'postman' },
   { name: 'Playwright', icon: 'playwright' },
 ]
 
