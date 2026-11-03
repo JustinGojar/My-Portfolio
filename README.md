@@ -120,7 +120,7 @@ Everything shown on the site comes from **`src/data.js`**:
 - **Profile:** name, roles, about text, quote, CV link and email
 - **Projects:** add images to `public/projects/` and set each project's `image`, `live` and `repo`
 - **Certificates:** add scans to `public/certificates/` and list them in `certificates`
-- **Tech stack:** add an entry to `techStack`; its `icon` key must exist in `src/components/TechIcon.jsx`
+- **Tech stack:** add an item (`name`, `icon`, `url`) under a category in `techStack`; `url` is the official website it opens in a new tab, and the `icon` key must exist in `src/components/TechIcon.jsx`
 - **Socials:** update URLs and handles in `socials`
 - **Colors:** edit the CSS variables at the top of `src/styles.css`
 

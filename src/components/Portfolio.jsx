@@ -87,10 +87,18 @@ export default function Portfolio() {
                 <h3 className="eyebrow tech-heading">{group.category}</h3>
                 <div className="tech-grid">
                   {group.items.map((t, i) => (
-                    <div className="tech" key={t.name} style={{ animationDelay: `${(g * 3 + i) * 40}ms` }}>
+                    <a
+                      className="tech"
+                      key={t.name}
+                      href={t.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${t.name} official website`}
+                      style={{ animationDelay: `${(g * 3 + i) * 40}ms` }}
+                    >
                       <TechIcon name={t.icon} />
                       {t.name}
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>
