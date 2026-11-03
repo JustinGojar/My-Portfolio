@@ -81,11 +81,18 @@ export default function Portfolio() {
         )}
 
         {tab === 'tech' && (
-          <div className="tech-grid panel" key="t">
-            {techStack.map((t, i) => (
-              <div className="tech" key={t.name} style={{ animationDelay: `${i * 40}ms` }}>
-                <TechIcon name={t.icon} />
-                {t.name}
+          <div className="tech-groups panel" key="t">
+            {techStack.map((group, g) => (
+              <div className="tech-group" key={group.category}>
+                <h3 className="eyebrow tech-heading">{group.category}</h3>
+                <div className="tech-grid">
+                  {group.items.map((t, i) => (
+                    <div className="tech" key={t.name} style={{ animationDelay: `${(g * 3 + i) * 40}ms` }}>
+                      <TechIcon name={t.icon} />
+                      {t.name}
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
