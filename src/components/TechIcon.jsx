@@ -2,8 +2,9 @@ import {
   SiReact, SiJavascript, SiTypescript, SiHtml5, SiCss, SiTailwindcss, SiPhp, SiLaravel, SiMysql,
   SiVite, SiGit, SiGithub, SiPostman, SiFigma, SiInstagram, SiYoutube, SiTiktok, SiNextdotjs,
   SiNodedotjs, SiExpress, SiSupabase, SiVercel, SiRailway, SiNetlify, SiClaude, SiFacebook, SiTelegram,
-  SiPython, SiCloudflare,
+  SiPython, SiCloudflare, SiDocker, SiXampp, SiCursor,
 } from 'react-icons/si'
+import { VscVscode } from 'react-icons/vsc'
 import { Linkedin, Mail } from 'lucide-react'
 
 // Codex has no react-icons entry: outlined cloud with a terminal prompt.
@@ -60,6 +61,10 @@ const map = {
   netlify: [SiNetlify, '#00C7B7'],
   cloudflare: [SiCloudflare, '#F38020'],
   python: [SiPython, '#3776AB'],
+  docker: [SiDocker, '#2496ED'],
+  xampp: [SiXampp, '#FB7A24'],
+  vscode: [VscVscode, '#007ACC'],
+  cursor: [SiCursor, '#ffffff'],
   claude: [SiClaude, '#D97757'],
   codex: [CodexIcon, '#ffffff'],
   facebook: [SiFacebook, '#1877F2'],
