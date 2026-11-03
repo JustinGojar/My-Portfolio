@@ -51,9 +51,16 @@ export const projects = [
     // slides for the project page carousel (the card on the Portfolio tab uses `image`)
     gallery: [
       { src: '/projects/bulan-senior-care.webp', alt: 'Bulan SeniorCare banner', caption: 'Bulan SeniorCare' },
-      { src: '/projects/bulan-senior-care/bulan-aerial.webp', alt: 'Aerial view of Bulan, Sorsogon', caption: 'Bulan, Sorsogon' },
-      { src: '/projects/bulan-senior-care/seniors.webp', alt: 'Senior citizens of Bulan', caption: 'Senior citizens of Bulan' },
-      { src: '/projects/bulan-senior-care/osca-staff.webp', alt: 'OSCA Bulan staff', caption: 'OSCA Bulan staff', position: 'center 30%' },
+      { src: '/projects/bulan-senior-care/landing-page.webp', alt: 'Bulan SeniorCare landing page', caption: 'Landing page' },
+      { src: '/projects/bulan-senior-care/login-page.webp', alt: 'Bulan SeniorCare sign-in page', caption: 'Sign-in page' },
+      { src: '/projects/bulan-senior-care/dashboard.webp', alt: 'Bulan SeniorCare system dashboard', caption: 'System dashboard' },
+      { src: '/projects/bulan-senior-care/senior-records.webp', alt: 'Bulan SeniorCare senior records', caption: 'Senior records' },
+      { src: '/projects/bulan-senior-care/eligibility-review.webp', alt: 'Bulan SeniorCare eligibility review', caption: 'Eligibility review' },
+      { src: '/projects/bulan-senior-care/age-threshold.webp', alt: 'Bulan SeniorCare age threshold', caption: 'Age threshold' },
+      { src: '/projects/bulan-senior-care/benefit-tracking.webp', alt: 'Bulan SeniorCare benefit tracking', caption: 'Benefit tracking' },
+      { src: '/projects/bulan-senior-care/analytics.webp', alt: 'Bulan SeniorCare analytics', caption: 'Analytics' },
+      { src: '/projects/bulan-senior-care/user-management.webp', alt: 'Bulan SeniorCare user management', caption: 'User management' },
+      { src: '/projects/bulan-senior-care/my-profile.webp', alt: 'Bulan SeniorCare my profile', caption: 'My profile' },
     ],
     short:
       'A senior-citizen management system with records, benefits tracking and a dashboard for local government staff.',
