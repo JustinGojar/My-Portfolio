@@ -2,6 +2,7 @@ import {
   SiReact, SiJavascript, SiTypescript, SiHtml5, SiCss, SiTailwindcss, SiPhp, SiLaravel, SiMysql,
   SiVite, SiGit, SiGithub, SiPostman, SiFigma, SiInstagram, SiYoutube, SiTiktok, SiNextdotjs,
   SiNodedotjs, SiExpress, SiSupabase, SiVercel, SiRailway, SiNetlify, SiClaude, SiFacebook, SiTelegram,
+  SiPython, SiCloudflare,
 } from 'react-icons/si'
 import { Linkedin, Mail } from 'lucide-react'
 
@@ -57,6 +58,8 @@ const map = {
   vercel: [SiVercel, '#ffffff'],
   railway: [SiRailway, '#ffffff'],
   netlify: [SiNetlify, '#00C7B7'],
+  cloudflare: [SiCloudflare, '#F38020'],
+  python: [SiPython, '#3776AB'],
   claude: [SiClaude, '#D97757'],
   codex: [CodexIcon, '#ffffff'],
   facebook: [SiFacebook, '#1877F2'],

@@ -54,10 +54,10 @@ A gender awareness and inclusion platform on gender-based violence and harassmen
 
 | Category | Technologies |
 | --- | --- |
-| **Frontend Frameworks** | React · JavaScript · TypeScript · HTML · CSS · Tailwind CSS · Vite |
-| **Backend Frameworks & Data** | Node.js · Express · PHP · Laravel · MySQL · Supabase |
+| **Frontend Frameworks** | HTML · CSS · JavaScript · TypeScript · Tailwind CSS · React · Vite |
+| **Backend Frameworks & Data** | Python · MySQL · PHP · Laravel · Node.js · Express |
 | **Testing** | Postman · Playwright |
-| **Hosting & Deployment** | Vercel · Railway · Netlify · Cloudflare |
+| **Hosting & Deployment** | Vercel · Railway · Netlify · Cloudflare · Supabase |
 | **Tools** | Git · GitHub · Figma · Claude Code · Codex |
 
 ---
