@@ -53,6 +53,11 @@ export const projects = [
       { src: '/projects/bulan-senior-care.webp', alt: 'Bulan SeniorCare banner', caption: 'Bulan SeniorCare' },
       { src: '/projects/bulan-senior-care/landing-page.webp', alt: 'Bulan SeniorCare landing page', caption: 'Landing page' },
       { src: '/projects/bulan-senior-care/login-page.webp', alt: 'Bulan SeniorCare sign-in page', caption: 'Sign-in page' },
+      { src: '/projects/bulan-senior-care/dashboard.webp', alt: 'Bulan SeniorCare system dashboard', caption: 'System dashboard' },
+      { src: '/projects/bulan-senior-care/senior-records.webp', alt: 'Bulan SeniorCare senior records', caption: 'Senior records' },
+      { src: '/projects/bulan-senior-care/eligibility-review.webp', alt: 'Bulan SeniorCare eligibility review', caption: 'Eligibility review' },
+      { src: '/projects/bulan-senior-care/age-threshold.webp', alt: 'Bulan SeniorCare age threshold', caption: 'Age threshold' },
+      { src: '/projects/bulan-senior-care/benefit-tracking.webp', alt: 'Bulan SeniorCare benefit tracking', caption: 'Benefit tracking' },
     ],
     short:
       'A senior-citizen management system with records, benefits tracking and a dashboard for local government staff.',
