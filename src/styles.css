@@ -274,7 +274,10 @@ img { display: block; max-width: 100%; }
 .cert { cursor: zoom-in; }
 .cert .thumb { aspect-ratio: 11/7.8; }
 
-.tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 18px; max-width: 900px; margin: 0 auto; }
+.tech-groups { display: flex; flex-direction: column; gap: 40px; max-width: 900px; margin: 0 auto; }
+.tech-heading { margin: 0 0 16px; font-weight: 400; display: flex; align-items: center; gap: 14px; }
+.tech-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 18px; }
 .tech {
   aspect-ratio: 1; border-radius: 18px; background: var(--surface); border: 1px solid var(--border);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;

@@ -88,31 +88,56 @@ export const certificates = [
   { title: 'Certificate of Participation', issuer: 'Your Seminar / Workshop', image: '/certificates/certificate-2.svg' },
 ]
 
-// icon keys map to logos in components/TechIcon.jsx
+// Grouped by category; icon keys map to logos in components/TechIcon.jsx
 export const techStack = [
-  { name: 'React', icon: 'react' },
-  { name: 'JavaScript', icon: 'js' },
-  { name: 'TypeScript', icon: 'ts' },
-  { name: 'HTML', icon: 'html' },
-  { name: 'CSS', icon: 'css' },
-  { name: 'Tailwind CSS', icon: 'tailwind' },
-  { name: 'Vite', icon: 'vite' },
-  { name: 'Node.js', icon: 'node' },
-  { name: 'Express', icon: 'express' },
-  { name: 'PHP', icon: 'php' },
-  { name: 'Laravel', icon: 'laravel' },
-  { name: 'MySQL', icon: 'mysql' },
-  { name: 'Supabase', icon: 'supabase' },
-  { name: 'Git', icon: 'git' },
-  { name: 'GitHub', icon: 'github' },
-  { name: 'Vercel', icon: 'vercel' },
-  { name: 'Railway', icon: 'railway' },
-  { name: 'Netlify', icon: 'netlify' },
-  { name: 'Figma', icon: 'figma' },
-  { name: 'Claude Code', icon: 'claude' },
-  { name: 'Codex', icon: 'codex' },
-  { name: 'Postman', icon: 'postman' },
-  { name: 'Playwright', icon: 'playwright' },
+  {
+    category: 'Frontend Frameworks',
+    items: [
+      { name: 'React', icon: 'react' },
+      { name: 'JavaScript', icon: 'js' },
+      { name: 'TypeScript', icon: 'ts' },
+      { name: 'HTML', icon: 'html' },
+      { name: 'CSS', icon: 'css' },
+      { name: 'Tailwind CSS', icon: 'tailwind' },
+      { name: 'Vite', icon: 'vite' },
+    ],
+  },
+  {
+    category: 'Backend Frameworks & Data',
+    items: [
+      { name: 'Node.js', icon: 'node' },
+      { name: 'Express', icon: 'express' },
+      { name: 'PHP', icon: 'php' },
+      { name: 'Laravel', icon: 'laravel' },
+      { name: 'MySQL', icon: 'mysql' },
+      { name: 'Supabase', icon: 'supabase' },
+    ],
+  },
+  {
+    category: 'Testing',
+    items: [
+      { name: 'Postman', icon: 'postman' },
+      { name: 'Playwright', icon: 'playwright' },
+    ],
+  },
+  {
+    category: 'Hosting & Deployment',
+    items: [
+      { name: 'Vercel', icon: 'vercel' },
+      { name: 'Railway', icon: 'railway' },
+      { name: 'Netlify', icon: 'netlify' },
+    ],
+  },
+  {
+    category: 'Tools',
+    items: [
+      { name: 'Git', icon: 'git' },
+      { name: 'GitHub', icon: 'github' },
+      { name: 'Figma', icon: 'figma' },
+      { name: 'Claude Code', icon: 'claude' },
+      { name: 'Codex', icon: 'codex' },
+    ],
+  },
 ]
 
 export const experience = [
