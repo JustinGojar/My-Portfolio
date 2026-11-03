@@ -51,9 +51,8 @@ export const projects = [
     // slides for the project page carousel (the card on the Portfolio tab uses `image`)
     gallery: [
       { src: '/projects/bulan-senior-care.webp', alt: 'Bulan SeniorCare banner', caption: 'Bulan SeniorCare' },
-      { src: '/projects/bulan-senior-care/bulan-aerial.webp', alt: 'Aerial view of Bulan, Sorsogon', caption: 'Bulan, Sorsogon' },
-      { src: '/projects/bulan-senior-care/seniors.webp', alt: 'Senior citizens of Bulan', caption: 'Senior citizens of Bulan' },
-      { src: '/projects/bulan-senior-care/osca-staff.webp', alt: 'OSCA Bulan staff', caption: 'OSCA Bulan staff', position: 'center 30%' },
+      { src: '/projects/bulan-senior-care/landing-page.webp', alt: 'Bulan SeniorCare landing page', caption: 'Landing page' },
+      { src: '/projects/bulan-senior-care/login-page.webp', alt: 'Bulan SeniorCare sign-in page', caption: 'Sign-in page' },
     ],
     short:
       'A senior-citizen management system with records, benefits tracking and a dashboard for local government staff.',
