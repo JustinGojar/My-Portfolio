@@ -16,6 +16,19 @@ function CodexIcon({ color = 'currentColor', ...props }) {
   )
 }
 
+// Playwright has no react-icons entry: two overlapping theatre masks.
+function PlaywrightIcon({ color, ...props }) {
+  return (
+    <svg viewBox="0 0 24 24" width="1em" height="1em" {...props}>
+      <path fill="#D65348" d="M2.2 6.4c2.9-1.5 6.1-2 9.3-1.3l-.6 9.4c-.3 3.4-2.7 5.4-5.2 4.8C3.2 18.7 1.7 15.6 1.9 12z" />
+      <path fill="#2EAD33" d="M9.6 6.6c3.9-.6 8.1.1 12.2 1.8l-.9 6.8c-.5 3.7-3.4 6.1-6.4 5.5-3-.6-5-3.8-4.9-7.6z" />
+      <circle cx="13.3" cy="11.6" r="1.1" fill="#fff" />
+      <circle cx="18" cy="12.4" r="1.1" fill="#fff" />
+      <path d="M13.2 15.6c1.3 1.1 3 1.4 4.6.8" fill="none" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 // Brand-coloured logos for the Tech Stack tab and social links.
 const map = {
   react: [SiReact, '#61DAFB'],
@@ -31,6 +44,7 @@ const map = {
   git: [SiGit, '#F05032'],
   github: [SiGithub, '#ffffff'],
   postman: [SiPostman, '#FF6C37'],
+  playwright: [PlaywrightIcon, '#2EAD33'],
   figma: [SiFigma, '#F24E1E'],
   next: [SiNextdotjs, '#ffffff'],
   instagram: [SiInstagram, '#E4405F'],
