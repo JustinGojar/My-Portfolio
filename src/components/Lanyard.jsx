@@ -1,10 +1,52 @@
 import { useEffect, useRef, useState } from 'react'
 import { profile } from '../data.js'
 
-// Hanging ID card on a lanyard. Drag it and the strap stretches; let go and it
-// swings and springs back to its resting length.
+// Hanging ID card on a lanyard. Drag it away and the strap stretches; push it up
+// and the strap goes slack and crumples. Let go and it swings and springs back.
+const REST = 380 // resting strap length in px
 const MAX_STRETCH = 220 // px the strap can stretch, approached with a rubber-band feel
-const rubber = (d) => (d <= 0 ? 0 : MAX_STRETCH * (1 - Math.exp(-d / MAX_STRETCH)))
+const MAX_SLACK = 250 // px the card can be pushed up; the strap crumples to make up the length
+const W = 30 // strap width
+const rubber = (d) => (d <= 0 ? Math.max(-MAX_SLACK, d) : MAX_STRETCH * (1 - Math.exp(-d / MAX_STRETCH)))
+
+// Wavy centre line for a slack strap: folds that fade out at both ends so the
+// strap still meets the pivot and the clip straight.
+const FOLDS = 7
+const SAMPLES = 48
+const waveX = (t, amp) =>
+  amp * Math.sin(Math.PI * t) * (Math.sin(FOLDS * Math.PI * t) + 0.35 * Math.sin((FOLDS * 2 + 1) * Math.PI * t))
+const pathLength = (h, amp) => {
+  let len = 0
+  let px = 0
+  let py = 0
+  for (let i = 1; i <= SAMPLES; i++) {
+    const t = i / SAMPLES
+    const x = waveX(t, amp)
+    const y = t * h
+    len += Math.hypot(x - px, y - py)
+    px = x
+    py = y
+  }
+  return len
+}
+function strapPath(h) {
+  const cx = W / 2
+  if (h >= REST - 0.5) return `M${cx} 0 L${cx} ${h}`
+  // find the fold size that keeps the strap at its real length
+  let lo = 0
+  let hi = 140
+  for (let i = 0; i < 14; i++) {
+    const mid = (lo + hi) / 2
+    if (pathLength(h, mid) < REST) lo = mid
+    else hi = mid
+  }
+  let d = `M${cx} 0`
+  for (let i = 1; i <= SAMPLES; i++) {
+    const t = i / SAMPLES
+    d += ` L${(cx + waveX(t, lo)).toFixed(2)} ${(t * h).toFixed(2)}`
+  }
+  return d
+}
 
 export default function Lanyard() {
   const rigRef = useRef(null)
@@ -26,14 +68,19 @@ export default function Lanyard() {
         st.angle += st.vel * dt
         const lenAcc = -140 * st.len - 7 * st.lenVel // bouncy spring back to rest length
         st.lenVel += lenAcc * dt
-        st.len = Math.max(-25, st.len + st.lenVel * dt)
+        st.len = Math.max(-MAX_SLACK, st.len + st.lenVel * dt)
       }
       st.tilt += (Math.max(-35, Math.min(35, st.vel * 0.25)) - st.tilt) * 0.12
       if (rigRef.current) {
         rigRef.current.style.transform = `rotate(${st.angle}deg)`
         rigRef.current.querySelector('.id-card').style.transform = `perspective(700px) rotateY(${st.tilt}deg)`
       }
-      if (strapRef.current) strapRef.current.style.height = `${380 + st.len}px`
+      if (strapRef.current) {
+        const h = REST + st.len
+        strapRef.current.style.height = `${h}px`
+        const d = strapPath(h)
+        strapRef.current.querySelectorAll('path').forEach((p) => p.setAttribute('d', d))
+      }
       raf = requestAnimationFrame(step)
     }
     raf = requestAnimationFrame(step)
@@ -95,9 +142,21 @@ export default function Lanyard() {
         onPointerCancel={up}
       >
         <div ref={pivotRef} style={{ width: 0, height: 0 }} />
-        <div ref={strapRef} className="strap">
-          {[0, 1].map((i) => <span key={i}>{strapText}</span>)}
-        </div>
+        <svg ref={strapRef} className="strap" width={W} height={REST} aria-hidden="true">
+          <defs>
+            <filter id="strap-glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.5" result="b" />
+              <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+          </defs>
+          <path className="strap-edge" d={strapPath(REST)} />
+          <path id="strap-line" className="strap-body" d={strapPath(REST)} />
+          <text className="strap-text" filter="url(#strap-glow)">
+            {['14%', '62%'].map((o) => (
+              <textPath key={o} href="#strap-line" startOffset={o}>{strapText}</textPath>
+            ))}
+          </text>
+        </svg>
         <div className="clip" />
         <div className="clip-ring" />
         <div className="id-card">
