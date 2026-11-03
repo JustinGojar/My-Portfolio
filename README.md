@@ -26,9 +26,7 @@ On my capstone project, **Bulan Senior Care**, I handled testing across the whol
 | Area | Tool |
 | --- | --- |
 | API testing | Postman |
-| Load testing | Apache JMeter |
-| Performance & accessibility audits | Google Lighthouse |
-| Security scanning | OWASP ZAP |
+| End-to-end testing | Playwright |
 
 I also build with React, so I understand the code behind what I test.
 

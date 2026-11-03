@@ -37,7 +37,7 @@ export const profile = {
     "Hi! I'm Justin, a QA tester who makes sure software works the way people expect it to. I test web apps end to end, from UI details and user flows to APIs, performance and security, and I document every bug clearly so it gets fixed fast.",
   about: [
     'An aspiring QA tester and IT student at Sorsogon State University - Bulan Campus in Bulan, Sorsogon, on a journey of learning, testing and growing. I care about quality: catching bugs early, writing clear test cases and making sure every feature works for everyone who uses it.',
-    'On my capstone project, Bulan Senior Care, I handled testing across the system: API checks with Postman, load testing with JMeter, performance and accessibility audits with Lighthouse, and security scans with OWASP ZAP. I also build with React, so I understand the code behind what I test.',
+    'On my capstone project, Bulan Senior Care, I handled testing across the system: API checks with Postman and end-to-end browser testing with Playwright. I also build with React, so I understand the code behind what I test.',
   ],
   quote: 'Quality is not an accident. I test every detail so it works for everyone who uses it.',
 }
@@ -111,6 +111,7 @@ export const techStack = [
   { name: 'Figma', icon: 'figma' },
   { name: 'Claude Code', icon: 'claude' },
   { name: 'Codex', icon: 'codex' },
+  { name: 'Playwright', icon: 'playwright' },
 ]
 
 export const experience = [
