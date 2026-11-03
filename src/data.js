@@ -81,6 +81,8 @@ export const projects = [
       { src: '/projects/equalize-gender/statistics.webp', alt: 'Statistics page', caption: 'Statistics' },
       { src: '/projects/equalize-gender/laws-and-rights.webp', alt: 'Laws & Rights page', caption: 'Laws & Rights' },
       { src: '/projects/equalize-gender/inclusion.webp', alt: 'Inclusion page', caption: 'Inclusion' },
+      { src: '/projects/equalize-gender/take-action.webp', alt: 'Take Action page', caption: 'Take Action' },
+      { src: '/projects/equalize-gender/sources.webp', alt: 'Sources page', caption: 'Sources' },
     ],
     short:
       'A gender awareness and inclusion platform on gender-based violence and harassment, built around official Philippine data and laws.',
