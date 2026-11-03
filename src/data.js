@@ -74,6 +74,14 @@ export const projects = [
     title: 'Equalize Gender',
     category: 'Front-End',
     image: '/projects/equalize-gender.webp',
+    gallery: [
+      { src: '/projects/equalize-gender.webp', alt: 'Equalize Gender banner', caption: 'Equalize Gender' },
+      { src: '/projects/equalize-gender/home.webp', alt: 'Equalize home page', caption: 'Home' },
+      { src: '/projects/equalize-gender/the-issue.webp', alt: 'The Issue page', caption: 'The Issue' },
+      { src: '/projects/equalize-gender/statistics.webp', alt: 'Statistics page', caption: 'Statistics' },
+      { src: '/projects/equalize-gender/laws-and-rights.webp', alt: 'Laws & Rights page', caption: 'Laws & Rights' },
+      { src: '/projects/equalize-gender/inclusion.webp', alt: 'Inclusion page', caption: 'Inclusion' },
+    ],
     short:
       'A gender awareness and inclusion platform on gender-based violence and harassment, built around official Philippine data and laws.',
     description:

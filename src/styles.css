@@ -322,9 +322,9 @@ img { display: block; max-width: 100%; }
 
 /* Project image carousel (coverflow) */
 .carousel { outline: none; user-select: none; touch-action: pan-y; }
-.carousel-stage { position: relative; aspect-ratio: 16 / 9.5; overflow: hidden; border-radius: var(--radius); }
+.carousel-stage { position: relative; aspect-ratio: 16 / 8.4; overflow: hidden; border-radius: var(--radius); }
 .carousel .slide {
-  position: absolute; top: 6%; left: 50%; width: 74%; height: 88%; padding: 0; border: 1px solid var(--border);
+  position: absolute; top: 10.5%; left: 50%; width: 74%; height: 79%; padding: 0; border: 1px solid var(--border);
   border-radius: 14px; overflow: hidden; background: #111; cursor: pointer;
   transition: transform .55s cubic-bezier(.22,.8,.3,1), opacity .4s, filter .4s, box-shadow .4s;
   filter: brightness(.45) saturate(.8); box-shadow: 0 18px 40px rgba(0,0,0,.6);
