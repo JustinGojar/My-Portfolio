@@ -58,7 +58,7 @@ A gender awareness and inclusion platform on gender-based violence and harassmen
 | **Backend Frameworks & Data** | Python · MySQL · PHP · Laravel · Node.js · Express |
 | **Testing** | Postman · Playwright |
 | **Hosting & Deployment** | Vercel · Railway · Netlify · Cloudflare · Supabase |
-| **Tools** | Git · GitHub · Figma · Claude Code · Codex |
+| **Tools** | Git · GitHub · Figma · Claude Code · Codex · Docker · XAMPP · VS Code · Cursor |
 
 ---
 

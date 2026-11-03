@@ -138,6 +138,10 @@ export const techStack = [
       { name: 'Figma', icon: 'figma' },
       { name: 'Claude Code', icon: 'claude' },
       { name: 'Codex', icon: 'codex' },
+      { name: 'Docker', icon: 'docker' },
+      { name: 'XAMPP', icon: 'xampp' },
+      { name: 'VS Code', icon: 'vscode' },
+      { name: 'Cursor', icon: 'cursor' },
     ],
   },
 ]
