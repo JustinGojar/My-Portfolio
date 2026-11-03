@@ -56,7 +56,7 @@ A gender awareness and inclusion platform on gender-based violence and harassmen
 
 | Category | Technologies |
 | --- | --- |
-| **Testing** | Postman · JMeter · Lighthouse · OWASP ZAP |
+| **Testing** | Postman · Playwright |
 | **Frontend** | React · JavaScript · TypeScript · HTML · CSS · Tailwind CSS · Vite |
 | **Backend & Data** | Node.js · Express · PHP · Laravel · MySQL · Supabase |
 | **Tools & Deployment** | Git · GitHub · Vercel · Railway · Netlify · Cloudflare · Figma · Claude Code · Codex |
