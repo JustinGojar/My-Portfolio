@@ -1,5 +1,6 @@
 import { ArrowLeft, CodeXml, Layers, ExternalLink, Github, Sparkles } from 'lucide-react'
 import Reveal from './Reveal.jsx'
+import Carousel from './Carousel.jsx'
 
 export default function ProjectDetail({ project: p }) {
   const LinkBtn = ({ href, icon: Icon, label }) =>
@@ -40,7 +41,7 @@ export default function ProjectDetail({ project: p }) {
             </Reveal>
           </div>
           <Reveal delay={150}>
-            <div className="preview"><img src={p.image} alt={p.title} /></div>
+            <Carousel images={p.gallery || [{ src: p.image, alt: p.title }]} title={p.title} />
             <div className="feature-box">
               <div className="h4"><Sparkles size={16} /> Key Features</div>
               <ul>{p.features.map((f) => <li key={f}>{f}</li>)}</ul>
