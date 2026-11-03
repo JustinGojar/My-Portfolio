@@ -93,24 +93,24 @@ export const techStack = [
   {
     category: 'Frontend Frameworks',
     items: [
-      { name: 'React', icon: 'react' },
-      { name: 'JavaScript', icon: 'js' },
-      { name: 'TypeScript', icon: 'ts' },
       { name: 'HTML', icon: 'html' },
       { name: 'CSS', icon: 'css' },
+      { name: 'JavaScript', icon: 'js' },
+      { name: 'TypeScript', icon: 'ts' },
       { name: 'Tailwind CSS', icon: 'tailwind' },
+      { name: 'React', icon: 'react' },
       { name: 'Vite', icon: 'vite' },
     ],
   },
   {
     category: 'Backend Frameworks & Data',
     items: [
-      { name: 'Node.js', icon: 'node' },
-      { name: 'Express', icon: 'express' },
+      { name: 'Python', icon: 'python' },
+      { name: 'MySQL', icon: 'mysql' },
       { name: 'PHP', icon: 'php' },
       { name: 'Laravel', icon: 'laravel' },
-      { name: 'MySQL', icon: 'mysql' },
-      { name: 'Supabase', icon: 'supabase' },
+      { name: 'Node.js', icon: 'node' },
+      { name: 'Express', icon: 'express' },
     ],
   },
   {
@@ -126,6 +126,8 @@ export const techStack = [
       { name: 'Vercel', icon: 'vercel' },
       { name: 'Railway', icon: 'railway' },
       { name: 'Netlify', icon: 'netlify' },
+      { name: 'Cloudflare', icon: 'cloudflare' },
+      { name: 'Supabase', icon: 'supabase' },
     ],
   },
   {
