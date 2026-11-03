@@ -12,7 +12,7 @@ export const profile = {
   cv: 'https://drive.google.com/file/d/1mRELQQ7i9zHVEPE7eDc5N3Xen0ZmaVJ1/view?usp=sharing',
   email: 'gojarjustinofficial@gmail.com',
   location: 'Bulan, Sorsogon, Philippines',
-  headline: ['QA', 'Tester'],
+  headline: ['Welcome to', 'My Portfolio'],
   cardRole: 'QA Tester', // small text on the ID card
   roles: [
     'QA Tester',
