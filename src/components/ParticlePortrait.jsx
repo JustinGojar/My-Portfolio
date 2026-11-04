@@ -2,16 +2,8 @@ import { useEffect, useRef } from 'react'
 
 // Renders the profile photo as a 3D point cloud: points gather into the
 // portrait, sway/rotate toward the cursor, scatter away from it, and get
-// occasional "splash" streaks. HUD trackers label a few points with their
-// live 3D coordinates.
-const SAMPLE = 230 // sampling grid resolution (points ≈ visible pixels of a SAMPLE² image)
-const TRACKERS = [
-  [0.02, -0.78], // hair
-  [-0.42, -0.22], // ear
-  [-0.62, 0.62], // left shoulder
-  [0.12, 0.42], // collar
-  [0.5, 0.6], // right shoulder
-]
+// occasional "splash" streaks.
+const SAMPLE = 330 // sampling grid resolution (points ≈ visible pixels of a SAMPLE² image)
 
 export default function ParticlePortrait({ src, alt }) {
   const canvasRef = useRef(null)
@@ -24,7 +16,6 @@ export default function ParticlePortrait({ src, alt }) {
     let running = false
     let disposed = false
     let pts = null
-    let trackers = []
     let W = 0
     let H = 0
     let dpr = 1
@@ -81,16 +72,9 @@ export default function ParticlePortrait({ src, alt }) {
       }
       if (reduce) for (const p of list) p.ox = p.oy = p.oz = 0
       pts = list
-      trackers = TRACKERS.map(([tx, ty]) => {
-        let best = null, bd = Infinity
-        for (const p of list) {
-          const dd = (p.x - tx) ** 2 + (p.y - ty) ** 2
-          if (dd < bd) { bd = dd; best = p }
-        }
-        return best
-      }).filter(Boolean)
     }
 
+    const out = [0, 0]
     const project = (p, cy, sy, cp, sp, scale, now) => {
       let x = p.x + p.ox, y = p.y + p.oy, z = p.z + p.oz
       if (splash && Math.abs(y - splash.y) < splash.h) {
@@ -104,7 +88,9 @@ export default function ParticlePortrait({ src, alt }) {
       const y1 = y * cp - z1 * sp
       const z2 = y * sp + z1 * cp
       const persp = 2.6 / (2.6 - z2)
-      return [W / 2 + x1 * scale * persp, H / 2 - scale * 0.05 + y1 * scale * persp, z2]
+      out[0] = W / 2 + x1 * scale * persp
+      out[1] = H / 2 - scale * 0.05 + y1 * scale * persp
+      return out
     }
 
     const draw = (now) => {
@@ -138,7 +124,8 @@ export default function ParticlePortrait({ src, alt }) {
         p.oz *= 0.955
         p.vx *= 0.86
         p.vy *= 0.86
-        const [sx, sy2] = project(p, cy, sy, cp, sp, scale, now)
+        project(p, cy, sy, cp, sp, scale, now)
+        const sx = out[0], sy2 = out[1]
         if (mouse.inside && !reduce) {
           const dx = sx - mouse.px, dy = sy2 - mouse.py
           const d2 = dx * dx + dy * dy
@@ -155,42 +142,6 @@ export default function ParticlePortrait({ src, alt }) {
         if (s === 2) { buf[i + 1] = p.col; buf[i + W] = p.col; buf[i + W + 1] = p.col }
       }
       ctx.putImageData(img, 0, 0)
-
-      // HUD trackers
-      ctx.save()
-      ctx.font = `${8 * dpr}px ui-monospace, SFMono-Regular, Menlo, monospace`
-      ctx.lineWidth = dpr * 0.7
-      const pos = trackers.map((p) => [...project(p, cy, sy, cp, sp, scale, now), p])
-      ctx.strokeStyle = 'rgba(255,255,255,0.28)'
-      ctx.beginPath()
-      pos.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)))
-      ctx.stroke()
-      pos.forEach(([x, y], i) => {
-        const b = 7 * dpr
-        ctx.strokeStyle = i === 0 ? 'rgba(255,42,69,0.9)' : 'rgba(255,255,255,0.75)'
-        ctx.beginPath()
-        // corner brackets
-        ctx.moveTo(x - b, y - b + 3 * dpr); ctx.lineTo(x - b, y - b); ctx.lineTo(x - b + 3 * dpr, y - b)
-        ctx.moveTo(x + b - 3 * dpr, y + b); ctx.lineTo(x + b, y + b); ctx.lineTo(x + b, y + b - 3 * dpr)
-        ctx.stroke()
-        ctx.fillStyle = 'rgba(255,255,255,0.85)'
-        ctx.fillRect(x - dpr, y - dpr, 2 * dpr, 2 * dpr)
-        const p = pos[i][3]
-        const f = (v) => (v >= 0 ? '+' : '') + v.toFixed(2)
-        const label = `${f(p.x + p.ox)} ${f(-(p.y + p.oy))} ${f(p.z + p.oz)}`
-        ctx.fillStyle = 'rgba(255,255,255,0.7)'
-        const tw = ctx.measureText(label).width
-        // labels point away from the face; skip one that doesn't fit on that side
-        // (on small screens it would otherwise cover the face)
-        const left = x < W / 2
-        const lx = left ? x - b - 4 * dpr - tw : x + b + 4 * dpr
-        if (lx < 0 || lx + tw > W) return
-        ctx.shadowColor = 'rgba(0,0,0,0.9)'
-        ctx.shadowBlur = 4 * dpr
-        ctx.fillText(label, lx, y - b + 2 * dpr)
-        ctx.shadowBlur = 0
-      })
-      ctx.restore()
     }
 
     const loop = (now) => {
