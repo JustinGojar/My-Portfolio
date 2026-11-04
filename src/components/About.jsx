@@ -1,5 +1,6 @@
 import { CodeXml, Award, Globe, ArrowUpRight, Eye } from 'lucide-react'
 import Reveal from './Reveal.jsx'
+import ParticlePortrait from './ParticlePortrait.jsx'
 import { profile, projects, certificates } from '../data.js'
 
 export default function About() {
@@ -38,7 +39,7 @@ export default function About() {
           </div>
           <Reveal delay={150}>
             <div className="avatar-ring">
-              <img src={profile.photo} alt={profile.name} />
+              <ParticlePortrait src={profile.photo} alt={profile.name} />
             </div>
           </Reveal>
         </div>
