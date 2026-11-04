@@ -108,8 +108,9 @@ export const projects = [
 ]
 
 export const certificates = [
-  { title: 'Certificate of Completion', issuer: 'Your Issuing Organization', image: '/certificates/certificate-1.svg' },
-  { title: 'Certificate of Participation', issuer: 'Your Seminar / Workshop', image: '/certificates/certificate-2.svg' },
+  { title: 'Introduction to HTML', issuer: 'Sololearn · Issued Jan 23, 2025', image: '/certificates/sololearn-html.webp' },
+  { title: 'Introduction to CSS', issuer: 'Sololearn · Issued Jan 29, 2025', image: '/certificates/sololearn-css.webp' },
+  { title: 'Introduction to JavaScript', issuer: 'Sololearn · Issued Feb 1, 2025', image: '/certificates/sololearn-javascript.webp' },
 ]
 
 // Grouped by category; icon keys map to logos in components/TechIcon.jsx
