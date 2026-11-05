@@ -188,7 +188,7 @@ export const experience = [
 
 export const socials = [
   { name: 'GitHub', handle: '@justingojar', url: 'https://github.com/justingojar', icon: 'github' },
-  { name: 'LinkedIn', handle: 'Justin Gojar', url: 'https://www.linkedin.com/in/justin-gojar-4b88583b3', icon: 'linkedin' },
+  { name: 'LinkedIn', handle: 'Justin Gojar', url: 'https://www.linkedin.com/in/justingojar', icon: 'linkedin' },
   { name: 'Facebook', handle: '@gojar.justin', url: 'https://www.facebook.com/gojar.justin', icon: 'facebook' },
   { name: 'Telegram', handle: '@parzival609', url: 'https://t.me/parzival609', icon: 'telegram' },
   { name: 'Email', handle: 'gojarjustinofficial@gmail.com', url: 'mailto:gojarjustinofficial@gmail.com', icon: 'email', wide: true },
